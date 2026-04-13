@@ -10,14 +10,14 @@ import image from "../assets/images/a95e62b50f8c087b327489d6f5dcfcd6a3ba6020.png
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 32 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] },
+  transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] as any },
 })
 
 const inView = (delay = 0) => ({
   initial: { opacity: 0, y: 32 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, margin: "-60px" },
-  transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] },
+  transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] as any },
 })
 
 const cards = [
@@ -82,8 +82,8 @@ const Programs = () => {
                 </button>
               </motion.div>
             </div>
-          <motion.div initial={{opacity:0,scale:0.8}} animate={{opacity:1,scale:1}} transition={{duration:0.9,delay:0.2,ease:[0.16,1,0.3,1]}} className="w-full lg:w-full lg:h-full">
-            <img className="w-full h-full object-cover" src={image} alt="" />
+          <motion.div initial={{opacity:0,scale:0.8}} animate={{opacity:1,scale:1}} transition={{duration:0.9,delay:0.2,ease:[0.16,1,0.3,1] as any}} className="w-full lg:w-full lg:h-full">
+            <img loading="lazy" className="w-full h-full object-cover" src={image} alt="" />
           </motion.div>
           </div>
         </div>
@@ -100,7 +100,7 @@ const Programs = () => {
                     <p className="text-gray-400 leading-relaxed text-md tracking-wide">Today's students are more connected than ever — and that connection comes with both extraordinary opportunity and real risk. The TLC Digital Citizenship Curriculum equips students across K–12 with the critical thinking, safety skills, and ethical grounding they need to thrive in a digital world. Rooted in climate-responsive digital literacy, the curriculum goes beyond screen time — it shapes how young people engage, create, and contribute online, responsibly.</p>
                 </div>
                 <div className="w-full lg:w-1/2">
-                    <img className="w-full aspect-video lg:aspect-auto lg:w-xl lg:h-xl object-cover lg:object-contain rounded-b-3xl lg:rounded-b-none lg:rounded-r-3xl border-t lg:border-t-0 lg:border-l border-gray-200" src={earth} alt="" />
+                    <img loading="lazy" className="w-full aspect-video lg:aspect-auto lg:w-xl lg:h-xl object-cover lg:object-contain rounded-b-3xl lg:rounded-b-none lg:rounded-r-3xl border-t lg:border-t-0 lg:border-l border-gray-200" src={earth} alt="" />
                 </div>
             </motion.div>
             <motion.div {...inView(0.05)} className="border border-gray-200 rounded-3xl flex flex-col lg:flex-row w-full">
@@ -109,7 +109,7 @@ const Programs = () => {
                     <p className="text-gray-400 leading-relaxed text-md tracking-wide">We support girls in underserved and under-resourced communities across Africa, tackling one of the most significant yet under-stated barriers to their education: Period Poverty. We work with communities to provide access to sanitary pads, and hygiene resources, so young girls can attend school with dignity and confidence. We aim to empower girls to reach their full potential and unlock a brighter future for themselves and their communities by addressing this hidden issue.</p>
                 </div>
                 <div className="w-full lg:w-1/2">
-                    <img className="w-full aspect-video lg:aspect-auto lg:h-full object-cover rounded-b-3xl lg:rounded-b-none lg:rounded-r-3xl border-t lg:border-t-0 lg:border-l border-gray-200" src={pfp} alt="" />
+                    <img loading="lazy" className="w-full aspect-video lg:aspect-auto lg:h-full object-cover rounded-b-3xl lg:rounded-b-none lg:rounded-r-3xl border-t lg:border-t-0 lg:border-l border-gray-200" src={pfp} alt="" />
                 </div>
             </motion.div>
             <motion.div {...inView(0.1)} className="border border-gray-200 rounded-3xl flex flex-col lg:flex-row w-full">
@@ -127,7 +127,7 @@ const Programs = () => {
 
                 </div>
                 <div className="w-full lg:w-1/2">
-                    <img className="w-full aspect-video lg:aspect-auto lg:h-full object-cover rounded-b-3xl lg:rounded-b-none lg:rounded-r-3xl border-t lg:border-t-0 lg:border-l border-gray-200" src={ndu} alt="" />
+                    <img loading="lazy" className="w-full aspect-video lg:aspect-auto lg:h-full object-cover rounded-b-3xl lg:rounded-b-none lg:rounded-r-3xl border-t lg:border-t-0 lg:border-l border-gray-200" src={ndu} alt="" />
                 </div>
             </motion.div>
           </div>

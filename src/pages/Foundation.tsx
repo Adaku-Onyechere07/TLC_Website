@@ -15,14 +15,14 @@ import highlights from "../assets/images/Frame 497.png"
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 32 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] },
+  transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] as any },
 })
 
 const inView = (delay = 0) => ({
   initial: { opacity: 0, y: 32 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, margin: "-60px" },
-  transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] },
+  transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] as any },
 })
 
 const coreOfferings = [
@@ -60,18 +60,18 @@ const Foundation = () => {
                 <button onClick={() => navigate('/get-involved')} className="bg-black text-white text-md font-semibold px-8 lg:px-10 py-3 lg:py-4 rounded-lg shadow-xl shadow-black/10">Volunteer</button>
                 </motion.div>
             </div>
-            <motion.div initial={{opacity:0,scale:0.8}} animate={{opacity:1,scale:1}} transition={{duration:0.9,delay:0.2,ease:[0.16,1,0.3,1]}} className="w-full lg:w-full lg:h-full">
-              <img className="w-full h-full object-cover" src={image} alt="" />
+            <motion.div initial={{opacity:0,scale:0.8}} animate={{opacity:1,scale:1}} transition={{duration:0.9,delay:0.2,ease:[0.16,1,0.3,1] as any}} className="w-full lg:w-full lg:h-full">
+              <img loading="lazy" className="w-full h-full object-cover" src={image} alt="" />
             </motion.div>
             </div>
         </div>
 
         <div className="w-full h-full relative flex items-center justify-center">
         <div className="relative w-full h-full">
-          <img src={bg} alt="Description" className="w-full md:max-h-[700px] fit-stretch" />
+          <img loading="lazy" src={bg} alt="Description" className="w-full md:max-h-[700px] fit-stretch" />
           <div className="absolute inset-0 flex flex-col items-center justify-center">
             <h1 className="text-white text-[36px] md:text-[44px] mt-20 lg:text-[55px] font-bold">Our Mission</h1>
-            <img src={mission} className="w-full max-w-2xl lg:w-7xl lg:h-7xl p-10 object-contain" />
+            <img loading="lazy" src={mission} className="w-full max-w-2xl lg:w-7xl lg:h-7xl p-10 object-contain" />
           </div>
         </div>
       </div>
@@ -81,10 +81,10 @@ const Foundation = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-15 leading-loose">
                 {coreOfferings.map((card, i) => (
                 <motion.div key={card.title} {...inView(i * 0.1)} className="relative">
-                    <div className="bg-white flex flex-col px-6 lg:px-8 py-10 lg:py-12 rounded-2xl drop-shadow-lg shadow-black/100 min-h-[300px] h-[440px] lg:h-[420px]">
+                    <div className="bg-white flex flex-col px-6 lg:px-8 py-10 lg:py-12 rounded-2xl drop-shadow-lg shadow-black/100 min-h-[300px] h-[460px] lg:h-[420px]">
                     <div className="absolute bottom-0 right-0 w-22 h-22 bg-black/10" style={{ borderRadius: '14px 0 20px 0' }} />
                     <p className="text-gray-900 font-medium text-xl lg:text-2xl mb-6">{card.title}</p>
-                    <p className="text-md text-gray-500 leading-loose mb-8 flex-1">{card.desc}</p>
+                    <p className="text-md lg:text-sm text-gray-500 leading-loose mb-8 flex-1">{card.desc}</p>
                     <p onClick={() => navigate('/foundation/programs')} className="text-[#1a5c2e] font-semibold uppercase text-lg leading-loose cursor-pointer hover:underline">LEARN MORE</p>
                 </div>
                 <button onClick={() => navigate('/foundation/programs')} className="absolute bottom-0 right-0 bg-[#1a5c2e] rounded-tl-2xl rounded-br-2xl w-20 h-20 flex items-center justify-center hover:bg-[#154a24] transition-colors shadow-lg">
@@ -108,7 +108,7 @@ const Foundation = () => {
           ].map((card, i) => (
           <motion.div key={card.num} {...inView(i * 0.1)} className="drop-shadow-lg shadow-black/50 rounded-3xl h-full">
             <div className="relative bg-white border border-gray-200 rounded-3xl p-8 lg:p-12 flex flex-col gap-3 h-full overflow-hidden">
-            <img src={card.splash} alt="" className="absolute top-0 left-0 w-full object-cover pointer-events-none select-none" />
+            <img loading="lazy" src={card.splash} alt="" className="absolute top-0 left-0 w-full object-cover pointer-events-none select-none" />
               <p className="text-[28px] font-bold text-gray-900 leading-none">{card.num}</p>
             <div className="relative z-10 flex flex-col gap-3">              
              <p className="text-[17px] py-3 font-semibold text-gray-900">{card.title}</p>
@@ -130,7 +130,7 @@ const Foundation = () => {
         ].map((card, i) => (
         <motion.div key={card.num} {...inView(i * 0.1)} className="drop-shadow-lg shadow-black/50 min-h-[300px] lg:min-h-[500px] rounded-3xl">
           <div className="relative bg-white border border-gray-200 rounded-3xl p-8 lg:p-12 flex flex-col gap-3 h-full overflow-hidden">
-          <img src={card.splash} alt="" className="absolute top-0 left-0 w-full object-cover pointer-events-none select-none" />
+          <img loading="lazy" src={card.splash} alt="" className="absolute top-0 left-0 w-full object-cover pointer-events-none select-none" />
           <p className="text-[28px] font-bold text-gray-900 leading-none">{card.num}</p>
           <div className="relative z-10 flex flex-col gap-3">
             <p className="text-[17px] py-3 font-semibold text-gray-900">{card.title}</p>
@@ -144,7 +144,7 @@ const Foundation = () => {
         </div>
 
         <motion.div {...inView()}>
-            <img className="h-full w-full object-cover" src={highlights} alt="" />
+            <img loading="lazy" className="h-full w-full object-cover" src={highlights} alt="" />
         </motion.div>
 
         <div className="px-6 md:px-16 lg:px-30">
@@ -158,7 +158,7 @@ const Foundation = () => {
                     <p className="text-black font-semibold leading-relaxed text-md tracking-wide leading-loose">Follow our social media platforms for participation details.</p></div>
                 </div>
                 <div className="w-full lg:w-[60%]">
-                    <img className="w-full h-full object-cover rounded-b-3xl lg:rounded-b-none lg:rounded-r-xl" src={sel} alt="" />
+                    <img loading="lazy" className="w-full h-full object-cover rounded-b-3xl lg:rounded-b-none lg:rounded-r-xl" src={sel} alt="" />
                 </div>
             </div>
           </motion.div>

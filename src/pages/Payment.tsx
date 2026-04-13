@@ -41,10 +41,10 @@ const Payment = () => {
                 <p className="text-[14px] lg:text-[16px] pt-6 text-gray-700 uppercase tracking-wide block">AVAILABLE PAYMENT METHODS</p>
                 <div className="flex flex-row items-center justify-center gap-4">
                     <div className="border border-gray-200 h-28 lg:h-36 rounded-2xl p-6 lg:p-10 flex justify-center items-center">
-                        <img className="size-40 lg:size-60 object-contain" src={paystack} alt="" />
+                        <img loading="lazy" className="size-40 lg:size-60 object-contain" src={paystack} alt="" />
                     </div>
                     <div className="border border-gray-200 h-28 lg:h-36 rounded-2xl p-5 lg:p-8 flex justify-center items-center">
-                        <img className="size-40 lg:size-60 object-contain" src={gofundme} alt="" />
+                        <img loading="lazy" className="size-40 lg:size-60 object-contain" src={gofundme} alt="" />
                     </div>
                 </div>
                 <button onClick={() => navigate(-1)} className="mt-4 text-[16px] flex items-start justify-start text-[#1a5c2e] underline">
@@ -55,7 +55,7 @@ const Payment = () => {
                 </button>
             </div>
             <div className="hidden lg:flex w-[45%] h-[60vh] items-center justify-center">
-                <img className="size-120 object-contain" src={charity} alt="" />
+                <img loading="lazy" className="size-120 object-contain" src={charity} alt="" />
             </div>
         </div>
 

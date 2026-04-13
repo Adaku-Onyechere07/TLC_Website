@@ -7,20 +7,20 @@ import heart from "../assets/images/heart_perfect.png"
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 32 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] },
+  transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] as any },
 })
 
 const inView = (delay = 0) => ({
   initial: { opacity: 0, y: 32 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, margin: "-60px" },
-  transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] },
+  transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] as any },
 })
 
-const fadeLeft = (delay = 0) => ({
+const fadeLeft = (_delay = 0) => ({
     initial: { opacity: 0, x: 100 },
     whileInView: { opacity: 1, x: 0 },
-    transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] as any },
     viewport: { once: true }
 })
 
@@ -61,8 +61,8 @@ const GetInvolved = () => {
                 <button className="border border-gray-500 text-gray-500 text-sm px-3 py-1.5 rounded-full hover:border-gray-700 hover:text-gray-700 transition-colors">I'm a Parent</button>
               </div>
             </div>
-          <motion.div initial={{opacity:0,scale:0.8}} animate={{opacity:1,scale:1}} transition={{duration:0.9,delay:0.2,ease:[0.16,1,0.3,1]}} className="">
-            <img className="w-60 h-60 md:w-80 md:h-80 lg:h-120 lg:w-120 object-contain" src={heart} alt="" />
+          <motion.div initial={{opacity:0,scale:0.8}} animate={{opacity:1,scale:1}} transition={{duration:0.9,delay:0.2,ease:[0.16,1,0.3,1] as any}} className="">
+            <img loading="lazy" className="w-60 h-60 md:w-80 md:h-80 lg:h-120 lg:w-120 object-contain" src={heart} alt="" />
           </motion.div>
           </div> 
         </div>
@@ -114,8 +114,8 @@ const GetInvolved = () => {
                 { num: "02", title: "Institutional", desc: "School and university implementation partnerships" },
                 { num: "03", title: "Community-Based", desc: "Grassroots and community education programs" },
                 { num: "04", title: "Multi-Lingual", desc: "Programs across multiple African languages and regions" },
-                ].map((item, i) => (
-                <motion.div key={item.num} {...fadeLeft(i * 0.1)} className="bg-white border border-gray-200 rounded-xl py-6 px-4 border-l-12 border-l-[#1C5035]">
+                ].map((item) => (
+                <motion.div key={item.num} {...fadeLeft(0.1)} className="bg-white border border-gray-200 rounded-xl py-6 px-4 border-l-12 border-l-[#1C5035]">
                     <p className="text-2xl font-bold text-gray-900 mb-4">{item.num}</p>
                     <p className="text-md font-bold text-gray-900 mb-4">{item.title}</p>
                     <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>

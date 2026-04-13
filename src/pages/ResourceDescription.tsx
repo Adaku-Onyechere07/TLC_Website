@@ -355,6 +355,53 @@ const RESOURCES: ResourceDetail[] = [
     quantitySelector: true,
     moreDetails: "More Details →",
   },
+    {
+    slug: "ndu-student-resources-video",
+    title: "NDU® SEL Toolkit",
+    providerName: "The Learning Craft",
+    image: nduVideo,
+    description: (
+      <>
+        <div className="mb-3 text-xl leading-relaxed text-black">
+          <p>SEL Social &amp; Emotional Learning (Tool Kit)</p>
+        </div>
+        <p className="mb-3 text-sm leading-relaxed text-black">
+          ndu® Social &amp; Emotional Learning (SEL) Programme – is a comprehensive learning experience designed to enable students and educators to develop SEL skills; cultivating a culture of care, collaboration and character in classrooms and schools around the world.
+        </p>
+        <p className="mb-3 text-xl font-medium text-gray-800">Empowering Schools, Transforming Students</p>
+        <p className="mb-3 text-sm leading-relaxed text-black">
+          ndu® SEL is more than just a programme – it's a toolkit for educators who believe in the power of social and emotional learning in shaping the future.
+        </p>
+        <p className="mb-3 text-sm leading-relaxed text-black">
+          Our programme equips teachers with the resources they need to seamlessly integrate SEL into their daily curriculum, creating a nurturing environment where every student feels seen, heard, connected and valued.
+        </p>
+        <p className="mb-2 text-sm leading-relaxed text-black">Join our ndu® Social &amp; Emotional Learning SEL Certified membership:</p>
+        <ul className="list-disc list-inside text-sm text-black space-y-1 mb-3">
+          <li>School Membership</li>
+          <li>Access to exclusive adoption training for enhancing school culture. Community forums for teacher, student, parent collaboration to foster strong relationships and a sense of community.</li>
+          <li>Teacher member: access to exclusive resources (including lesson plans, teacher guides etc), training, community forums.</li>
+          <li>Year-long SEL Integration advisory and support.</li>
+          <li>Proven outcomes: statistically conclusive and positive impact on student achievement through our SEL membership.</li>
+        </ul>
+        <p className="text-sm text-gray-500 italic">
+          Send us an email for more about the program:{" "}
+          <span className="text-[#1a5c2e]">info@learningcraft.org</span>
+        </p>
+      </>
+    ),
+    bullets: [
+      { text: "30-day prompt cards provide teachers with thoughtfully curated activities that invite students to explore the five core SEL competency areas." },
+      { text: "Comprehensive teacher guide, which serves as a roadmap for implementing the program with ease and confidence." },
+      { text: "Lesson plans at 4 levels – Early Childhood, Lower Primary, Upper Primary and Junior Secondary (Digital copies)." },
+      { text: "Honour badges awarded weekly and..." },
+    ],
+    price: "₦ 35,000",
+    actionType: "purchase",
+    actionLabel: "Purchase",
+    imageSlot: true,
+    quantitySelector: true,
+    moreDetails: "More Details →",
+  },
 ];
 
 export default function ResourceDescription() {
@@ -397,7 +444,7 @@ export default function ResourceDescription() {
                   <video src={resource.image} className="w-full lg:w-100 h-full lg:h-100 object-contain rounded-2xl" controls autoPlay muted loop />
                 </div>
               ) : (
-                <img src={resource.image} alt={resource.title} className="w-60 h-60 lg:w-80 lg:h-80 object-contain" />
+                <img loading="lazy" src={resource.image} alt={resource.title} className="w-60 h-60 lg:w-80 lg:h-80 object-contain" />
               )
             ) : (
               <div className="w-full h-full flex items-center justify-center text-gray-400 text-sm">
@@ -415,7 +462,7 @@ export default function ResourceDescription() {
             <h3 className="text-base font-bold text-gray-900">{resource.title}</h3>
             <div className="flex items-center gap-2">
               <div className="w-10 h-10 rounded-full bg-white border border-gray-200 flex-shrink-0 overflow-hidden">
-                <img src={providerLogo} className="w-10 h-10 object-cover" alt="" />
+                <img loading="lazy" src={providerLogo} className="w-10 h-10 object-cover" alt="" />
               </div>
               <span className="text-md font-medium p-2 text-black">{resource.providerName}</span>
             </div>

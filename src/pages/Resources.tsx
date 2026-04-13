@@ -350,7 +350,7 @@ function ResourceCard({ card, onNavigate }: { card: Card; onNavigate: (path: str
       {card.hasImage && (
         <div className="w-full h-32 rounded-lg bg-gray-100 overflow-hidden">
           {card.image ? (
-            <img src={card.image} alt={card.title} className="w-full h-full object-cover" />
+            <img loading="lazy" src={card.image} alt={card.title} className="w-full h-full object-cover" />
           ) : (
             <div className="w-full h-full flex items-center justify-center text-gray-400 text-xs">
               Video Thumbnail
@@ -474,7 +474,7 @@ export default function ResourceHub() {
               </div>
               </motion.div>
               <motion.div className="hidden lg:block pr-15" initial={{opacity:0,scale:0.8}} animate={{opacity:1,scale:1}} transition={{duration:0.9,delay:0.2,ease:[0.16,1,0.3,1]}}>
-                <img className="h-120 w-120 object-contain -rotate-45" src={rocket} alt="" />
+                <img loading="lazy" className="h-120 w-120 object-contain -rotate-45" src={rocket} alt="" />
               </motion.div> 
               </div>
             </div>

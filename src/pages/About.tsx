@@ -22,14 +22,14 @@ import story from "../assets/images/Frame 271.png"
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 32 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] },
+  transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] as any },
 })
 
 const inView = (delay = 0) => ({
   initial: { opacity: 0, y: 32 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, margin: "-60px" },
-  transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] },
+  transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] as any },
 })
 
 const About = () => {
@@ -40,9 +40,9 @@ const About = () => {
         <div
         className="h-full bg-white relative z-20 w-full py-6 lg:py-10 overflow-hidden -mb-20"
         >
-        <img src={polygon} alt="" className="absolute top-0 left-0 size-40 lg:size-80 object-cover pointer-events-none select-none z-0" />
-        <img src={polygon2} alt="" className="absolute left-1/2 -translate-x-1/2 -top-70 size-120 rotate-90 object-cover pointer-events-none select-none z-0" />
-        <img src={rectangle} alt="" className="absolute -top-10 -right-20 size-60 lg:size-100 rotate-10 object-cover pointer-events-none select-none z-0" />
+        <img loading="lazy" src={polygon} alt="" className="absolute top-0 left-0 size-40 lg:size-80 object-cover pointer-events-none select-none z-0" />
+        <img loading="lazy" src={polygon2} alt="" className="absolute left-1/2 -translate-x-1/2 -top-70 size-120 rotate-90 object-cover pointer-events-none select-none z-0" />
+        <img loading="lazy" src={rectangle} alt="" className="absolute -top-10 -right-20 size-60 lg:size-100 rotate-10 object-cover pointer-events-none select-none z-0" />
 
         <div className="relative z-10 flex flex-col items-center justify-center px-6 md:px-16 lg:px-30 gap-5">
             <motion.h1 {...fadeUp(0)} className="font-bold text-[32px] md:text-[48px] lg:text-[60px] text-center md:max-w-full">Empowering African Learners</motion.h1>
@@ -84,7 +84,7 @@ const About = () => {
         </div>
         </div>
 
-        <div className=" mt-10 z-0 w-full h-full"><img src={story} alt="" className="w-full object-cover" /></div>
+        <div className=" mt-10 z-0 w-full h-full"><img loading="lazy" src={story} alt="" className="w-full object-cover" /></div>
         </div>
 
         <motion.div {...inView()} className="font-thin text-[28px] lg:text-[40px] w-full py-10 flex items-center justify-center">
@@ -99,7 +99,7 @@ const About = () => {
               { img: uche, name: "Uche Chikezie", role: "Project Manager" },
             ].map((m, i) => (
               <motion.div key={m.name} {...inView(i * 0.08)} className="flex flex-col items-center justify-center">
-                <img src={m.img} alt="" className="w-32 h-32 lg:w-50 lg:h-50 rounded-full object-cover mb-5" />
+                <img loading="lazy" src={m.img} alt="" className="w-32 h-32 lg:w-50 lg:h-50 rounded-full object-cover mb-5" />
                 <p className="font-semibold text-center text-sm lg:text-base">{m.name}</p>
                 <p className="text-gray-400 text-center text-xs lg:text-sm">{m.role}</p>
               </motion.div>
@@ -113,7 +113,7 @@ const About = () => {
               { img: maurice, name: "Maurice Edem", role: "Operations Officer" },
             ].map((m, i) => (
               <motion.div key={m.name} {...inView(i * 0.08)} className="flex flex-col items-center justify-center">
-                <img src={m.img} alt="" className="w-32 h-32 lg:w-50 lg:h-50 rounded-full object-cover mb-5" />
+                <img loading="lazy" src={m.img} alt="" className="w-32 h-32 lg:w-50 lg:h-50 rounded-full object-cover mb-5" />
                 <p className="font-semibold text-center text-sm lg:text-base">{m.name}</p>
                 <p className="text-gray-400 text-center text-xs lg:text-sm">{m.role}</p>
               </motion.div>
@@ -125,7 +125,7 @@ const About = () => {
         <hr className="border-t-2 border-gray-200 w-full rounded-lg mt-5" />
         <div className="flex flex-wrap items-center justify-center py-10 gap-6 lg:gap-8 w-full">
             {[cei, chelis, kizazi, ltbt].map((src, i) => (
-              <motion.img key={i} src={src} alt="" className="h-14 lg:h-20 w-40 lg:w-80 object-contain" {...inView(i * 0.1)} />
+              <motion.img key={i} src={src} alt="" className="h-14 lg:h-20 w-40 lg:w-60 object-contain" {...inView(i * 0.1)} />
             ))}
         </div>
         <hr className="border-t-2 border-gray-200 w-full rounded-lg mt-5" />

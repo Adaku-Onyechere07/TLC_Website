@@ -121,7 +121,7 @@ const HomePage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.0 , ease: 'easeOut' }}
               viewport={{ once: true }}>
-              <img
+              <img loading="lazy"
                 src={welcomeImage}
                 alt=""
                 className="w-full h-full object-cover"
@@ -138,7 +138,7 @@ const HomePage = () => {
             <div onClick={() => navigate('/programs')} className="h-[400px] lg:h-[500px] w-full md:w-[26vw] border border-gray-200 rounded-[2rem] flex flex-col cursor-pointer hover:shadow-md transition-shadow">
               <div className="flex-1 flex items-center justify-center">
                 <div className="bg-gradient-to-b from-[#1C5035] to-[#24B66B] rounded-full p-8 h-32 w-32 lg:h-40 lg:w-40 flex items-center justify-center">
-                  <img src={programs} alt="" />
+                  <img loading="lazy" src={programs} alt="" />
                 </div>
               </div>
               <div className="flex flex-row items-center justify-center bg-gray-200 border-b border-b-gray-200 rounded-b-[2rem] gap-6">
@@ -151,7 +151,7 @@ const HomePage = () => {
             </div>
             <div onClick={() => navigate('/resources/sel-workbooks')} className="h-[400px] lg:h-[500px] w-full md:w-[26vw] border border-gray-200 rounded-[2rem] flex flex-col cursor-pointer hover:shadow-md transition-shadow">
               <div className="flex-1 flex items-center justify-center">
-                  <img src={workbooks} alt="" className="p-8 h-60 w-60 lg:h-80 lg:w-80 flex items-center justify-center" />
+                  <img loading="lazy" src={workbooks} alt="" className="p-8 h-60 w-60 lg:h-80 lg:w-80 flex items-center justify-center" />
               </div>
               <div className="flex flex-row items-center justify-center bg-gray-200 border-b border-b-gray-200 rounded-b-[2rem] gap-6">
                 <div className="flex flex-col bg-gray-200 py-8 px-6 gap-1 rounded-b-[2rem]">
@@ -163,7 +163,7 @@ const HomePage = () => {
             </div>
             <div onClick={() => navigate('/resources/ndu-sel-toolkit')} className="h-[400px] lg:h-[500px] w-full md:w-[26vw] border border-gray-200 rounded-[2rem] flex flex-col cursor-pointer hover:shadow-md transition-shadow">
               <div className="flex-1 flex items-center justify-center">
-                  <img src={toolkits} alt="" className="p-8 h-48 w-64 lg:h-60 lg:w-80 flex items-center justify-center" />
+                  <img loading="lazy" src={toolkits} alt="" className="p-8 h-48 w-64 lg:h-60 lg:w-80 flex items-center justify-center" />
               </div>
               <div className="flex flex-row items-center justify-center bg-gray-200 border-b border-b-gray-200 rounded-b-[2rem] gap-6">
                 <div className="flex flex-col bg-gray-200 py-8 px-6 gap-1 rounded-b-[2rem]">
@@ -199,7 +199,7 @@ const HomePage = () => {
               </div>
             </div>
             <div className="w-full lg:w-1/2 self-stretch h-60 lg:h-auto">
-              <img src={pascel} alt="" className="h-full w-full object-cover rounded-b-[2rem] lg:rounded-b-none lg:rounded-r-[2rem]" />
+              <img loading="lazy" src={pascel} alt="" className="h-full w-full object-cover rounded-b-[2rem] lg:rounded-b-none lg:rounded-r-[2rem]" />
             </div>
           </motion.div>
           <div className="border-t-gray-500 h-full">
@@ -254,7 +254,7 @@ const HomePage = () => {
                       className="flex-shrink-0 w-24 lg:w-40 self-stretch flex items-center justify-center"
                       style={{ background: "linear-gradient(135deg, #119B53, #85C54A, #C0DB46, #FAF041)" }}
                     >
-                      <img src={teta} alt="" className="w-16 h-16 lg:w-30 lg:h-30 object-contain" />
+                      <img loading="lazy" src={teta} alt="" className="w-16 h-16 lg:w-30 lg:h-30 object-contain" />
                     </div>
                     <div className="flex-1 px-3 lg:px-4 py-3 flex flex-col justify-between h-full">
                       <div className="flex items-start justify-between gap-2">
@@ -291,7 +291,7 @@ const HomePage = () => {
                   </div>
                   <div onClick={() => navigate("/resources/curriculum-planner")} className="flex items-center overflow-hidden h-40 md:h-35 w-[320px] md:w-[500px] lg:w-full lg:min-w-[700px] rounded-lg border border-gray-200 bg-white drop-shadow-lg shadow-black/70 cursor-pointer hover:shadow-lg transition-shadow">
                     <div className="flex-shrink-0 w-24 lg:w-40 self-stretch flex items-center justify-center border-l border-l-gray-200">
-                      <img src={planner} alt="" className="w-16 h-16 lg:w-30 lg:h-30 object-contain" />
+                      <img loading="lazy" src={planner} alt="" className="w-16 h-16 lg:w-30 lg:h-30 object-contain" />
                     </div>
                     <div className="flex-1 px-3 lg:px-4 py-3 flex flex-col justify-between h-full">
                       <div className="flex items-start justify-between gap-2">
@@ -327,7 +327,7 @@ const HomePage = () => {
                   </div>
                   <div onClick={() => navigate("/resources/curriculum-coordinator-academy")} className="flex items-center overflow-hidden h-40 md:h-35 lg:h-35 w-[320px] md:w-[500px] lg:w-full lg:min-w-[700px] rounded-lg border border-gray-200 bg-white drop-shadow-lg shadow-black/70 cursor-pointer hover:shadow-lg transition-shadow">
                       <div className="flex-shrink-0 w-24 lg:w-40 self-stretch flex items-center justify-center border-l border-l-gray-200">
-                        <img src={cca} alt="" className="w-16 h-16 lg:w-30 lg:h-30 object-contain" />
+                        <img loading="lazy" src={cca} alt="" className="w-16 h-16 lg:w-30 lg:h-30 object-contain" />
                       </div>
                     <div className="flex-1 px-3 lg:px-4 py-3 flex flex-col justify-between h-full">
                       <div className="flex items-start justify-between gap-2">
@@ -364,7 +364,7 @@ const HomePage = () => {
                   </div>
                   <div onClick={() => navigate("/resources/teachart")} className="flex items-center overflow-hidden h-40 md:h-35 w-[320px] md:w-[500px] lg:w-full lg:min-w-[700px] rounded-lg border border-gray-200 bg-white drop-shadow-lg shadow-black/70 cursor-pointer hover:shadow-lg transition-shadow">
                     <div className="flex-shrink-0 w-24 lg:w-40 self-stretch flex items-center justify-center border-l border-l-gray-200">
-                      <img src={teachart} alt="" className="w-16 h-16 lg:w-30 lg:h-30 object-contain" />
+                      <img loading="lazy" src={teachart} alt="" className="w-16 h-16 lg:w-30 lg:h-30 object-contain" />
                     </div>
                     <div className="flex-1 px-3 lg:px-4 py-3 flex flex-col justify-between h-full">
                       <div className="flex items-start justify-between gap-2">
@@ -425,10 +425,10 @@ const HomePage = () => {
                   </button>
                 </div>
               </div>
-              <div className="hidden lg:block absolute right-0 top-0 bottom-0">
-                <img className="min-w-[350px] min-h-[300px] rotate-67 absolute -top-24 right-10 w-full h-full object-contain" src={frame} alt="" />
-                <img className="min-w-[400px] min-h-[400px] rotate-67 absolute top-5 right-30 w-full h-full object-contain" src={frame} alt="" />
-                <img className="min-w-[450px] min-h-[500px] rotate-67 absolute top-38 right-50 w-full h-full object-contain" src={frame} alt="" />
+              <div className="hidden xl:block absolute right-0 top-0 bottom-0">
+                <img loading="lazy" className="min-w-[350px] min-h-[300px] rotate-67 absolute -top-28 left-25 w-full h-full object-contain" src={frame} alt="" />
+                <img loading="lazy" className="min-w-[425px] min-h-[400px] rotate-67 absolute top-3 -left-10 w-full h-full object-contain" src={frame} alt="" />
+                <img loading="lazy" className="min-w-[500px] min-h-[500px] rotate-67 absolute top-42 -left-45 w-full h-full object-contain" src={frame} alt="" />
               </div>
               </div>
           </motion.div>

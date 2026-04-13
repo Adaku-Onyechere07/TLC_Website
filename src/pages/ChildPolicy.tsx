@@ -17,22 +17,22 @@ const ChildPolicy = () => {
             <hr className="border-t border-gray-200 w-screen relative left-1/2 -translate-x-1/2 pt-5" />
         </div>
         <div className='flex flex-col items-start pt-5 pb-10 px-6 md:px-12 lg:px-20 gap-5'>
-            <h1 className='leading-loose tracking-tight text-lg lg:text-xl font-font-space-grotesk'>SUMMARY/PURPOSE</h1>
+            <h1 className='font-space-grotesk leading-loose tracking-tight text-lg lg:text-xl font-font-space-grotesk'>SUMMARY/PURPOSE</h1>
             <p className='leading-[2rem] lg:leading-[2.5rem] tracking-tight text-base lg:text-lg pb-10'>The Learning Craft® (TLC) considers all forms of abuse of power and exploitation to be incompatible with its fundamental belief in the human dignity of all people, regardless of age, sex, race, colour, religion, social origin, birth or other status. The Learning Craft®'s staff and people engaged by TLC must never engage in any form of humiliating, degrading, abusive or exploitative behaviour under any circumstances. Furthermore, as a humanitarian company working with particularly vulnerable children in the developing world and striving to eradicate all forms of deprivation of childhood education, The Learning Craft® is concerned and committed to promoting and safeguarding the rights of children, as per the United Nations Convention on the Rights of the Child (UNCRC), including their right to be protected from any and all forms of harm, abuse, neglect and/or exploitation. The Learning Craft® hereby formally acknowledges its expectation that its employees and others who work with The Learning Craft® have children's best interests at the heart of their involvement with The Learning Craft® at all times. This Child Protection Policy is The Learning Craft®'s statement of intent and demonstrates our commitment to safeguarding children from any harm and makes clear to all in the organisation and who come into contact with us what is required in relation to the protection of children. Child abuse (defined below) in any form is unacceptable and will lead to serious disciplinary action, up to and including dismissal and/or criminal proceedings. As per the UNCRC, our decisions and actions in response to child protection concerns will be guided by the principle of "the best interests of the child".</p>
             <hr className="border-t border-gray-200 w-screen relative left-1/2 -translate-x-1/2" />
         </div>
         <div className='flex flex-col items-start pt-5 pb-10 px-6 md:px-12 lg:px-20 gap-5'>
-            <h1 className='leading-loose tracking-tight text-lg lg:text-xl font-font-space-grotesk'>1. {"  "}DEFINITIONS UNDER THE LEARNING CRAFT® CHILD PROTECTION POLICY</h1>
+            <h1 className='font-space-grotesk leading-loose tracking-tight text-lg lg:text-xl font-font-space-grotesk'>1. {"  "}DEFINITIONS UNDER THE LEARNING CRAFT® CHILD PROTECTION POLICY</h1>
             <p className='leading-[2rem] lg:leading-[2.5rem] tracking-tight text-base lg:text-lg pb-10 w-full lg:w-[80vw]'>Child Protection, within the scope of this policy, is defined as the responsibilities, measures and activities that The Learning Craft® undertakes to safeguard children from both intentional and unintentional harm. As per the UNCRC, a Child is defined as any person under the age of 18 years, unless under the law applicable to the child, majority is attained earlier. Child Abuse is defined as all forms of physical abuse, emotional illtreatment,sexual abuse and exploitation, neglect or negligent treatment, commercial or other exploitation of a child and includes any actions that result in actual or potential harm to a child. Child abuse may be a deliberate act or it may be failing to act to prevent harm. Child abuse consists of anything which individuals, institutions or processes do or fail to do, intentionally or unintentionally, which harms a child or damages their prospect of safe and healthy development into adulthood.</p>
             <hr className="border-t border-gray-200 w-screen relative left-1/2 -translate-x-1/2" />
         </div>
         <div className='flex flex-col items-start pt-5 pb-10 px-6 md:px-12 lg:px-20 gap-5'>
-            <h1 className='leading-loose tracking-tight text-lg lg:text-xl font-font-space-grotesk'>2. {"  "}SCOPE OF THE CHILD PROTECTION POLICY</h1>
+            <h1 className='font-space-grotesk leading-loose tracking-tight text-lg lg:text-xl font-font-space-grotesk'>2. {"  "}SCOPE OF THE CHILD PROTECTION POLICY</h1>
             <p className='leading-[2rem] lg:leading-[2.5rem] tracking-tight text-base lg:text-lg pb-10 w-full lg:w-[80vw]'>This Child Protection Policy applies to everyone working for or associated with The Learning Craft®. It encompasses the whole of The Learning Craft® and includes without limitation: Staff at all levels – in the field, those working from home, at branch and subsidiary offices. The Learning Craft® Associates – these include board members, volunteers, community volunteers, sponsors, consultants and contractors. Also the staff and/or representatives of partner organisations and local governments who have been brought into contact with children or are party to The Learning Craft® child sensitive data while working for or with The Learning Craft®. TLC Visitors – (e.g. donors, journalists, media, researchers, celebrities etc.) who may come into contact with children through TLC are also bound by this policy.</p>
             <hr className="border-t border-gray-200 w-screen relative left-1/2 -translate-x-1/2" />
         </div>
         <div className='flex flex-col items-start pt-5 pb-10 px-6 md:px-12 lg:px-20 gap-5'>
-            <h1 className='leading-loose tracking-tight text-lg lg:text-xl font-font-space-grotesk'>3. {"  "}RESPONSIBILITIES UNDER THE CHILD PROTECTION POLICY</h1>
+            <h1 className='font-space-grotesk leading-loose tracking-tight text-lg lg:text-xl font-font-space-grotesk'>3. {"  "}RESPONSIBILITIES UNDER THE CHILD PROTECTION POLICY</h1>
             <div className='leading-[2rem] lg:leading-[2.5rem] tracking-tight text-base lg:text-lg pb-10 w-full lg:w-[80vw]'>
                 <p className="mb-4">
                     The Learning Craft® Staff, Associates and Visitors must:
@@ -68,7 +68,7 @@ const ChildPolicy = () => {
               </div>
             <hr className="border-t border-gray-200 w-screen relative left-1/2 -translate-x-1/2" />
             <div className='flex flex-col items-start pt-5 pb-10 px-2 lg:px-5 gap-5'>
-                <h1 className='leading-loose tracking-tight text-lg lg:text-xl font-font-space-grotesk'>ANNEX I</h1>
+                <h1 className='font-space-grotesk leading-loose tracking-tight text-lg lg:text-xl font-font-space-grotesk'>ANNEX I</h1>
                 <div className='leading-[2rem] lg:leading-[2.5rem] tracking-tight text-base lg:text-lg pb-10'>
                     <p className="uppercase mb-6 tracking-wide">
                         Guidelines on the Reporting of and Responding to Child Protection Issues

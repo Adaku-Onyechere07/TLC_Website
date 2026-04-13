@@ -30,25 +30,39 @@ import img2 from "../assets/images/img2.jpg"
 import img3 from "../assets/images/img3.jpg"
 import img4 from "../assets/images/img4.jpg"
 import img5 from "../assets/images/img5.jpg"
-
+import { useState, useEffect } from "react"
 
 const inView = (delay = 0) => ({
   initial: { opacity: 0, y: 28 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, margin: "-60px" },
-  transition: { duration: 0.65, delay, ease: [0.16, 1, 0.3, 1] },
+  transition: { duration: 0.65, delay, ease: [0.16, 1, 0.3, 1] as any },
 })
 
 const PASCEL = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+
+  const allImages = [img1, img2, img3, img4, img5]
+const [rotation, setRotation] = useState(0)
+
+useEffect(() => {
+  const id = setInterval(() => {
+    setRotation((r) => (r + 1) % allImages.length)
+  }, 2000)
+  return () => clearInterval(id)
+}, [])
+
+// derive the current ordered set from the rotation offset
+const imgs = allImages.map((_, i) => allImages[(i + rotation) % allImages.length])
+
   return (
     <>
     <Navbar />
     <div
       className="w-full h-full pb-12 lg:pb-20 flex items-start justify-center gap-10"
       style={{ backgroundImage: `url(${bg})`, backgroundSize: "cover", backgroundPosition: "center"}}>
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-15 items-center justify-between max-w-7xl mx-auto px-6 md:px-10">
-            <motion.div className="flex flex-col gap-6 lg:gap-9 pt-12 lg:pt-20 max-w-[700px]" initial={{opacity:0,y:36}} animate={{opacity:1,y:0}} transition={{duration:0.8,ease:[0.16,1,0.3,1]}}>
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-15 items-center justify-between max-w-full mx-auto px-6 md:px-10">
+            <motion.div className="flex flex-col gap-6 lg:gap-9 pt-12 lg:pt-20 max-w-[900px]" initial={{opacity:0,y:36}} animate={{opacity:1,y:0}} transition={{duration:0.8,ease:[0.16,1,0.3,1] as any}}>
               <span className="w-fit text-[12px] font-bold bg-[#F5C518]/10 border border-[#F5C518]/30 text-[#F5C518] rounded-full px-5 py-2 flex items-center justify-center gap-1">
                  <FaGraduationCap className="h-4 w-4 text-[#F5C518]" />FLAGSHIP INITIATIVE
               </span>
@@ -73,12 +87,12 @@ const PASCEL = () => {
               </div>
             </motion.div>
 
-            <motion.div className="relative w-full max-w-[550px] h-[220px] lg:h-[300px] flex items-center rounded-3xl overflow-hidden shadow-lg shadow-black/40" 
+            <motion.div className="relative w-full max-w-[450px] h-[220px] lg:h-[320px] flex items-center rounded-3xl overflow-hidden shadow-lg shadow-black/40" 
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.0 , ease: 'easeOut' }}
               viewport={{ once: true }}>
-              <img
+              <img loading="lazy"
                 src={pascel}
                 alt=""
                 className="w-full h-full object-cover"
@@ -88,26 +102,26 @@ const PASCEL = () => {
       </div>
       <motion.div className="bg-[#F5C518] py-10 lg:py-15 grid grid-cols-2 lg:grid-cols-4" initial={{opacity:0}} whileInView={{opacity:1}} viewport={{once:true}} transition={{duration:0.6}}>
         <div className="flex flex-col text-justify items-center justify-center py-4 px-4 lg:pr-8 border-r border-r-[#10502F]">
-            <h1 className="text-[#10502F] text-[32px] lg:text-[40px] font-bold">0000</h1>
+            <h1 className="font-playfair-display text-[#10502F] text-[32px] lg:text-[40px] font-bold">0000</h1>
             <p className="text-[#10502F] text-[12px] lg:text-[14px] uppercase font-medium tracking-wider text-center">teachers trained</p>
         </div>
         <div className="flex flex-col items-center justify-center py-4 px-4 lg:px-8 lg:border-r border-r-[#10502F]">
-            <h1 className="text-[#10502F] text-[32px] lg:text-[40px] font-bold">0000</h1>
+            <h1 className="font-playfair-display text-[#10502F] text-[32px] lg:text-[40px] font-bold">0000</h1>
             <p className="text-[#10502F] text-[12px] lg:text-[14px] uppercase font-medium tracking-wider text-center">students impacted</p>
         </div>
         <div className="flex flex-col items-center justify-center py-4 px-4 lg:px-8 border-r border-r-[#10502F]">
-            <h1 className="text-[#10502F] text-[32px] lg:text-[40px] font-bold">00</h1>
+            <h1 className="font-playfair-display text-[#10502F] text-[32px] lg:text-[40px] font-bold">00</h1>
             <p className="text-[#10502F] text-[12px] lg:text-[14px] uppercase font-medium tracking-wider text-center">countries reached</p>
         </div>
         <div className="flex flex-col items-center justify-center py-4 px-4 lg:px-12">
-            <h1 className="text-[#10502F] text-[32px] lg:text-[40px] font-bold">00</h1>
+            <h1 className="font-playfair-display text-[#10502F] text-[32px] lg:text-[40px] font-bold">00</h1>
             <p className="text-[#10502F] text-[12px] lg:text-[14px] uppercase font-medium tracking-wider text-center">partner schools</p>
         </div>
       </motion.div>
       <div className="bg-[#10502F] h-full w-full p-8 lg:p-20">
         <h1 className="text-[#F5C518] flex items-center justify-center w-full text-[36px] lg:text-[55px] font-bold">Our Mission</h1>
         <div className="flex items-center justify-center h-full w-full">
-            <img className="w-full lg:w-[70%] object-contain" src={mission} alt="" />
+            <img loading="lazy" className="w-full lg:w-[70%] object-contain" src={mission} alt="" />
         </div>
       </div>
       <div className="px-6 md:px-12 lg:px-20 py-10 lg:py-15 bg-gray-200 h-full">
@@ -181,7 +195,7 @@ const PASCEL = () => {
           <motion.div key={ri} {...inView()} className="grid grid-cols-2 md:grid-cols-4 items-start w-full gap-5 py-10">
             {row.map(([img, name, role]: [any, string, string], i: number) => (
               <div key={i} className="flex flex-col text-center items-center justify-center">
-                <img src={img} alt="" className="w-32 h-32 lg:w-50 lg:h-50 rounded-full object-cover mb-5" />
+                <img loading="lazy" src={img} alt="" className="w-32 h-32 lg:w-50 lg:h-50 rounded-full object-cover mb-5" />
                 <p className="font-semibold text-sm lg:text-base">{name}</p>
                 <p className="max-w-[80%] text-gray-500 text-xs lg:text-sm">{role}</p>
               </div>
@@ -190,33 +204,71 @@ const PASCEL = () => {
         ))}
         <motion.div {...inView()} className="grid grid-cols-2 md:grid-cols-4 items-start w-full gap-5 py-10">
             <div className="flex flex-col text-center items-center justify-center">
-                <img src={oguntade} alt="" className="w-32 h-32 lg:w-50 lg:h-50 rounded-full object-cover mb-5" />
+                <img loading="lazy" src={oguntade} alt="" className="w-32 h-32 lg:w-50 lg:h-50 rounded-full object-cover mb-5" />
                 <p className="font-semibold">Oguntade Ijeoma</p>
                 <p className="max-w-[80%] text-gray-500">Programs Lead</p>
             </div>
         </motion.div>
         </div>
-        <div className="px-6 md:px-12 lg:px-20 py-10 lg:py-15 flex flex-col">
+        <div className="px-6 md:px-12 lg:px-20 pt-10 lg:pt-15 flex flex-col">
         <div className="flex flex-col items-start gap-3 mb-6">
             <div className="flex flex-row items-center justify-center gap-3">
             <span className="w-6 h-0.5 bg-yellow-500 block" />
             <p className="text-xs font-bold tracking-widest text-[#1C5035] uppercase">moments that mattered</p>
             </div>
-            <h2 className="text-3xl font-bold text-gray-900 my-5">Photo Gallery</h2>
-            <div className="grid grid-cols-1 md:grid-cols-[1fr_16rem_16rem] gap-4 w-full">
-                <motion.div {...inView(0.1)} className="h-full rounded-2xl">
-                    <img className="h-full w-full object-cover rounded-2xl" src={img1} alt="" />
-                </motion.div>
-                <div className="flex flex-row md:flex-col gap-3 h-full">
-                    <motion.img {...inView(0.5)} className="h-48 md:h-full w-1/2 md:w-full object-cover rounded-2xl" src={img2} alt="" />
-                    <motion.img {...inView(0.7)} className="h-48 md:h-full w-1/2 md:w-full object-cover rounded-2xl" src={img3} alt="" />
-                </div>
-                <div className="flex flex-row md:flex-col gap-3 h-full">
-                    <motion.img {...inView(0.9)} className="h-48 md:h-full w-1/2 md:w-full object-cover rounded-2xl" src={img4} alt="" />
-                    <motion.img {...inView(1.1)} className="h-48 md:h-full w-1/2 md:w-full object-cover rounded-2xl" src={img5} alt="" />
-                </div>
-            </div>
+            <h2 className="text-3xl font-bold text-black my-5">Photo Gallery</h2>
+            <p className="text-gray-400 text-md w-full lg:w-[50%] tracking-wide">A living record of connection, dialogue, and transformation from PACSEL 2026.</p>
+          </div>
         </div>
+        <div className="px-6 md:px-12 lg:px-20 py-10 lg:py-15 flex flex-col">
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_16rem_16rem] gap-4 w-full">
+            <div className="h-full rounded-2xl">
+              <motion.img
+                key={imgs[0]}
+                layout
+                {...inView(0.1)}
+                className="h-full w-full object-cover rounded-2xl"
+                src={imgs[0]}
+                alt=""
+              />
+            </div>
+            <div className="flex flex-row md:flex-col gap-3 h-full">
+              <motion.img
+                key={imgs[1]}
+                layout
+                {...inView(0.3)}
+                className="h-48 md:h-full w-1/2 md:w-full object-cover rounded-2xl"
+                src={imgs[1]}
+                alt=""
+              />
+              <motion.img
+                key={imgs[2]}
+                layout
+                {...inView(0.5)}
+                className="h-48 md:h-full w-1/2 md:w-full object-cover rounded-2xl"
+                src={imgs[2]}
+                alt=""
+              />
+            </div>
+            <div className="flex flex-row md:flex-col gap-3 h-full">
+              <motion.img
+                key={imgs[3]}
+                layout
+                {...inView(0.7)}
+                className="h-48 md:h-full w-1/2 md:w-full object-cover rounded-2xl"
+                src={imgs[3]}
+                alt=""
+              />
+              <motion.img
+                key={imgs[4]}
+                layout
+                {...inView(0.9)}
+                className="h-48 md:h-full w-1/2 md:w-full object-cover rounded-2xl"
+                src={imgs[4]}
+                alt=""
+              />
+            </div>
+          </div>
         </div>
         <div className="px-6 md:px-12 lg:px-20 py-10 lg:py-15 flex flex-col bg-black">
         <div className="flex flex-col items-start gap-3 mb-6">
@@ -274,7 +326,7 @@ const PASCEL = () => {
             <motion.div className="flex flex-col lg:flex-row justify-between min-h-[50vh] lg:min-h-[80vh] w-full rounded-[2rem] bg-[#1C5035] my-20 overflow-hidden drop-shadow-2xl shadow-black/30"
             initial={{ opacity: 0, x: 100 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] as any }}
             viewport={{ once: true }}>
                 <div className="flex flex-row gap-6 lg:gap-10 relative">
                 <div className="flex flex-col gap-6 lg:gap-8 max-w-full lg:max-w-[700px] px-8 lg:px-15 py-12 lg:py-20 text-white">
@@ -295,9 +347,9 @@ const PASCEL = () => {
                 </div>
                 </div>
                 <div className="hidden lg:block absolute right-0 top-0 bottom-0">
-                <img className="min-w-[350px] min-h-[300px] rotate-67 absolute -top-28 left-25 w-full h-full object-contain" src={frame} alt="" />
-                <img className="min-w-[425px] min-h-[400px] rotate-67 absolute top-3 -left-10 w-full h-full object-contain" src={frame} alt="" />
-                <img className="min-w-[500px] min-h-[500px] rotate-67 absolute top-42 -left-45 w-full h-full object-contain" src={frame} alt="" />
+                  <img loading="lazy" className="min-w-[350px] min-h-[300px] rotate-67 absolute -top-28 left-25 w-full h-full object-contain" src={frame} alt="" />
+                  <img loading="lazy" className="min-w-[425px] min-h-[400px] rotate-67 absolute top-3 -left-10 w-full h-full object-contain" src={frame} alt="" />
+                  <img loading="lazy" className="min-w-[500px] min-h-[500px] rotate-67 absolute top-42 -left-45 w-full h-full object-contain" src={frame} alt="" />
                 </div>
                 </div>
             </motion.div>
