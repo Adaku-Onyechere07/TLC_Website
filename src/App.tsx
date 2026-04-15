@@ -6,9 +6,9 @@ import GetInvolved from "./pages/GetInvolved";
 import Programs from "./pages/Programs";
 import Foundation from "./pages/Foundation";
 import Payment from "./pages/Payment";
-import PASCEL from "./pages/PASCEL";
 import ResourceHub from "./pages/Resources";
 import ResourceDescription from "./pages/ResourceDescription";
+import PACSEL from "./pages/PACSEL";
 
 const router = createBrowserRouter([
   { path: "/", element: <HomePage /> },
@@ -27,7 +27,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Foundation /> },
       { path: "programs", element: <Programs /> },
-      { path: "pascel", element: <PASCEL /> },
+      { path: "pacsel", element: <PACSEL /> },
       { path: "payment", element: <Payment /> },
     ],
   },

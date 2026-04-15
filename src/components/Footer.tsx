@@ -8,7 +8,7 @@ const Footer = () => {
 
   const resourceLinks: { label: string; path: string }[] = [
     { label: "TLC Curriculum", path: "/resources/curriculum-planner" },
-    { label: "Conference Talks", path: "/foundation/pascel" },
+    { label: "Conference Talks", path: "/foundation/pacsel" },
     { label: "Curriculum Coordinator's Academy", path: "/resources/curriculum-coordinator-academy" },
     { label: "TETA", path: "/resources/exceptional-teachers-academy" },
     { label: "Decoding Dyslexia", path: "/resources/how-to-teach-dyslexics" },

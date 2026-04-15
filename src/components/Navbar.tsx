@@ -20,35 +20,62 @@ const Navbar = () => {
     );
   }
 
-  if (pathname === "/foundation/pascel") {
-    return (
-      <div>
-        <nav className="flex flex-row border-b border-b-[#F5C518] gap-3 w-full flex items-center justify-between py-5 px-6 lg:px-15 font-semibold" style={{ backgroundColor: "#10502F" }}>
-          <a href="" onClick={(e) => { e.preventDefault(); navigate('/'); }}>
-            <span className="text-[#F5C518] text-xl font-black tracking-widest flex items-center gap-2">
-              <img className="size-5" src={africa} alt="" />  PACSEL
-            </span>
-          </a>
-          <div className="flex items-center gap-3">
+  if (pathname === "/foundation/pacsel") {
+      return (
+        <div>
+          <nav className="flex flex-row border-b border-b-[#F5C518] gap-3 w-full flex items-center justify-between py-5 px-6 lg:px-15 font-semibold relative" style={{ backgroundColor: "#10502F" }}>
+            <a href="" onClick={(e) => { e.preventDefault(); navigate('/'); }}>
+              <span className="text-[#F5C518] text-lg md:text-xl font-black tracking-widest flex items-center gap-2">
+                <img className="size-5" src={africa} alt="" />  PACSEL
+              </span>
+            </a>
+            <div className="hidden md:flex items-center gap-3">
+              <button
+                onClick={() => navigate('/get-involved')}
+                className="text-sm font-semibold px-2 md:px-4 py-1 md:py-2 rounded-md border transition-colors hover:bg-[#F5C518]/10"
+                style={{ borderColor: "#F5C518", color: "#F5C518", background: "transparent" }}
+              >
+                Contact Us
+              </button>
+              <button
+                onClick={() => navigate('/get-involved')}
+                className="text-sm font-semibold px-2 md:px-4 py-1 md:py-2 rounded-md transition-colors hover:brightness-110"
+                style={{ backgroundColor: "#F5C518", color: "#10502F" }}
+              >
+              Get Involved
+              </button>
+            </div>
             <button
-              onClick={() => navigate('/get-involved')}
-              className="text-sm font-semibold px-4 py-2 rounded-md border transition-colors hover:bg-[#F5C518]/10"
-              style={{ borderColor: "#F5C518", color: "#F5C518", background: "transparent" }}
+              className="md:hidden flex flex-col gap-1.5 p-2"
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="Toggle menu"
             >
-              Contact Us
+              <span className={`block w-6 h-0.5 bg-[#F5C518] transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
+              <span className={`block w-6 h-0.5 bg-[#F5C518] transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`} />
+              <span className={`block w-6 h-0.5 bg-[#F5C518] transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
             </button>
-            <button
-              onClick={() => navigate('/get-involved')}
-              className="text-sm font-semibold px-4 py-2 rounded-md transition-colors hover:brightness-110"
-              style={{ backgroundColor: "#F5C518", color: "#10502F" }}
-            >
-             Get Involved
-            </button>
-          </div>
-        </nav>
-      </div>
-    );
-  }
+            {menuOpen && (
+              <div className="md:hidden absolute top-full left-0 right-0 border-b border-b-[#F5C518] shadow-lg z-50 px-6 py-6 flex flex-col gap-4" style={{ backgroundColor: "#10502F" }}>
+                <button
+                  onClick={() => { navigate('/get-involved'); setMenuOpen(false); }}
+                  className="text-sm font-semibold px-4 py-2 rounded-md border transition-colors hover:bg-[#F5C518]/10 w-full"
+                  style={{ borderColor: "#F5C518", color: "#F5C518", background: "transparent" }}
+                >
+                  Contact Us
+                </button>
+                <button
+                  onClick={() => { navigate('/get-involved'); setMenuOpen(false); }}
+                  className="text-sm font-semibold px-4 py-2 rounded-md transition-colors hover:brightness-110 w-full"
+                  style={{ backgroundColor: "#F5C518", color: "#10502F" }}
+                >
+                  Get Involved
+                </button>
+              </div>
+            )}
+          </nav>
+        </div>
+      );
+    }
 
   if (pathname.startsWith("/foundation")) {
     return (
@@ -61,7 +88,7 @@ const Navbar = () => {
             <li className="hover:underline cursor-pointer" onClick={() => navigate('/')}>Home</li>
             <li className="hover:underline cursor-pointer" onClick={() => navigate('/about')}>About Us</li>
             <li className="hover:underline cursor-pointer" onClick={() => navigate('/foundation/programs')}>Programs</li>
-            <li className="hover:underline cursor-pointer" onClick={() => navigate('/foundation/pascel')}>PASCEL</li>
+            <li className="hover:underline cursor-pointer" onClick={() => navigate('/foundation/pacsel')}>PACSEL</li>
           </ul>
           <button
             onClick={() => navigate('/get-involved')}
@@ -83,7 +110,7 @@ const Navbar = () => {
               <span className="text-sm font-semibold cursor-pointer hover:text-[#119B53]" onClick={() => { navigate('/'); setMenuOpen(false); }}>Home</span>
               <span className="text-sm font-semibold cursor-pointer hover:text-[#119B53]" onClick={() => { navigate('/about'); setMenuOpen(false); }}>About Us</span>
               <span className="text-sm font-semibold cursor-pointer hover:text-[#119B53]" onClick={() => { navigate('/foundation/programs'); setMenuOpen(false); }}>Programs</span>
-              <span className="text-sm font-semibold cursor-pointer hover:text-[#119B53]" onClick={() => { navigate('/foundation/pascel'); setMenuOpen(false); }}>PASCEL</span>
+              <span className="text-sm font-semibold cursor-pointer hover:text-[#119B53]" onClick={() => { navigate('/foundation/pacsel'); setMenuOpen(false); }}>PACSEL</span>
               <button
                 onClick={() => { navigate('/get-involved'); setMenuOpen(false); }}
                 className="border-[1.7px] border-black text-sm px-4 py-2 rounded-md hover:bg-gray-50 transition-colors w-full"

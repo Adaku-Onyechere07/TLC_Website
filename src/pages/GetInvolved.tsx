@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { FaRocket } from "react-icons/fa6"
 import Layout from "../components/Layout"
 import { motion } from "framer-motion"
@@ -32,6 +33,35 @@ const cards = [
 
 const GetInvolved = () => {
   const navigate = useNavigate()
+
+  const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '', organization: '', interest: '', message: '' })
+  const [errors, setErrors] = useState<Record<string, string>>({})
+
+  const validate = () => {
+    const newErrors: Record<string, string> = {}
+    if (!formData.firstName.trim()) newErrors.firstName = 'First name is required'
+    if (!formData.lastName.trim()) newErrors.lastName = 'Last name is required'
+    if (!formData.email.trim()) newErrors.email = 'Email is required'
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) newErrors.email = 'Enter a valid email'
+    if (!formData.interest) newErrors.interest = 'Please select an option'
+    if (!formData.message.trim()) newErrors.message = 'Message is required'
+    return newErrors
+  }
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target
+    setFormData(prev => ({ ...prev, [name]: value }))
+    if (errors[name]) setErrors(prev => ({ ...prev, [name]: '' }))
+  }
+
+  const handleSend = () => {
+    const newErrors = validate()
+    if (Object.keys(newErrors).length > 0) { setErrors(newErrors); return }
+    // TODO: send formData to your backend or email service
+    setFormData({ firstName: '', lastName: '', email: '', organization: '', interest: '', message: '' })
+    setErrors({})
+  }
+
   return (
     <>
     <Layout>
@@ -41,8 +71,8 @@ const GetInvolved = () => {
 
           <div className="flex flex-col lg:flex-row items-center justify-between max-w-7xl mx-auto gap-8 lg:gap-0">
             <div className="flex flex-col gap-6 lg:gap-9 max-w-[750px]">
-                <div className="w-full md:w-[80%] space-y-6 lg:space-y-10">
-                <motion.span {...fadeUp(0)} className="w-[50%] md:w-[40%] text-[12px] font-bold bg-[#d5fcee]/30 border border-[#119B53] text-[#119B53] rounded-full px-5 py-2 flex items-center justify-center gap-1 self-start">
+                <div className="flex flex-col gap-6 lg:gap-9 max-w-5xl">
+                    <motion.span {...fadeUp(0)} className="w-auto lg:w-[40%] text-[12px] font-bold bg-[#d5fcee]/30 border border-[#119B53] text-[#119B53] rounded-full px-5 py-2 flex items-center justify-center gap-1 self-start">
                     <FaRocket className="h-4 w-4 text-[#119B53]" />YOUR ROLE IN THE MISSION
                 </motion.span>
                 <motion.h1 {...fadeUp(0.1)} className="text-[36px] md:text-[48px] lg:text-[60px] font-bold leading-tight">
@@ -70,14 +100,14 @@ const GetInvolved = () => {
         <div className="bg-gradient-to-b from-gray-200 to-gray-50 px-6 md:px-10 lg:px-15 py-12 lg:py-20">
             <h2 {...inView()} className="text-3xl font-bold text-gray-900 mb-6">How you can engage</h2>
             <p {...inView(0.05)} className="text-sm text-gray-500 mb-8">Each pathway has one clear action. Find where you fit, and take the next step.</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-15 leading-loose">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 leading-loose">
                 {cards.map((card, i) => (
                 <motion.div key={card.title} {...inView(i * 0.1)} className="bg-white border border-gray-500 rounded-2xl p-8 lg:p-10 flex flex-col">
                     <div className="w-10 h-10 rounded-full bg-[#1C5035] flex items-center justify-center mb-4">
                     <span className="text-yellow-400 text-3xl leading-none pb-1">★</span>
                     </div>
                     <p className="font-bold text-gray-900 text-lg mb-4">{card.title}</p>
-                    <p className="text-md text-gray-500 leading-relaxed mb-8">{card.desc}</p>
+                    <p className="text-sm md:text-md text-gray-500 leading-relaxed mb-8">{card.desc}</p>
                     <ul className="flex flex-col gap-6 mb-7 flex-1">
                     {card.items.map((item) => (
                         <li key={item} className="flex items-start gap-2 text-xs text-gray-700 tracking-widest">
@@ -118,7 +148,7 @@ const GetInvolved = () => {
                 <motion.div key={item.num} {...fadeLeft(0.1)} className="bg-white border border-gray-200 rounded-xl py-6 px-4 border-l-12 border-l-[#1C5035]">
                     <p className="text-2xl font-bold text-gray-900 mb-4">{item.num}</p>
                     <p className="text-md font-bold text-gray-900 mb-4">{item.title}</p>
-                    <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
+                    <p className="text-xs md:text-sm text-gray-500 leading-relaxed">{item.desc}</p>
                 </motion.div>
                 ))}
             </div>
@@ -130,22 +160,22 @@ const GetInvolved = () => {
                         <span className="w-6 h-0.5 block" style={{ backgroundColor: '#F5C518' }} />
                         <p className="text-xs font-bold tracking-widest uppercase" style={{ color: '#F5C518' }}>Partnership Models</p>
                     </div>
-                    <h2 className="text-[28px] lg:text-[36px] font-bold text-white mb-4 leading-snug">Your support reaches further than you think</h2>
-                    <p className="text-lg text-[#F5C518] leading-loose mb-8 w-full lg:w-[80%] font-extrathin tracking-wide">
+                    <h2 className="text-[24px] lg:text-[36px] font-bold text-white mb-4 leading-snug">Your support reaches further than you think</h2>
+                    <p className="text-sm lg:text-lg text-[#F5C518] leading-loose mb-8 w-full lg:w-[80%] font-extrathin tracking-wide">
                         From classrooms to boardrooms, from funding to facilitation — there are many ways to join The Learning Craft community and help advance whole-child education across Africa.
                     </p>
-                    <button className="px-8 py-4 rounded-lg text-sm font-semibold flex items-center gap-2" style={{ backgroundColor: '#F5C518', color: '#111' }}>
+                    <button className="px-4 md:px-8 py-4 rounded-lg text-sm font-semibold flex items-center gap-2" style={{ backgroundColor: '#F5C518', color: '#111' }}>
                         Donate Now {" "}→
                     </button>
                     </div>
-                    <div className="grid grid-cols-2 gap-4 w-full">
+                    <div className="grid grid-cols-2 gap-3 md:gap-4 w-full">
                         {[
                             { stat: "412k+", label: "USERS SERVED" },
                             { stat: "24k+", label: "EDUCATORS TRAINED" },
                             { stat: "250+", label: "DIRECT CLIENTS" },
                             { stat: "10+", label: "YEARS OF IMPACT" },
                         ].map((item, i) => (
-                            <motion.div key={item.label} {...inView(i * 0.08)} className="rounded-3xl px-4 py-8 flex flex-col items-center justify-center text-center" style={{ backgroundColor: '#119B5333' }}>
+                            <motion.div key={item.label} {...inView(i * 0.08)} className="rounded-3xl px-4 py-4 md:py-8 flex flex-col items-center justify-center text-center" style={{ backgroundColor: '#119B5333' }}>
                             <p className="text-[36px] lg:text-[48px] font-bold mb-2" style={{ color: '#F5C518' }}>{item.stat}</p>
                             <p className="text-[14px] lg:text-[20px] tracking-widest" style={{ color: '#F5C518' }}>{item.label}</p>
                             </motion.div>
@@ -164,7 +194,7 @@ const GetInvolved = () => {
                         Let's start a <br />
                         <span style={{ color: '#119B53' }}>conversation</span>
                     </h2>
-                    <p className="text-[16px] lg:text-[18px] text-gray-500 leading-relaxed mt-4 mb-8 lg:mb-15">
+                    <p className="text-sm md:text-[16px] lg:text-[18px] text-gray-500 leading-relaxed mt-4 mb-8 lg:mb-15">
                         Whether you're ready to partner, want to volunteer, or just need more information — we'd love to hear from you. Fill in the form and we'll be in touch within 2 business days.
                     </p>
                     <div className="flex flex-col gap-4 text-sm text-black tracking-wide">
@@ -186,42 +216,47 @@ const GetInvolved = () => {
                         </div>
                     </div>
                     </div>
-                    <div className="bg-white border border-gray-500 rounded-[2rem] p-8 lg:p-12 pt-6 lg:pt-8">
+                    <div className="bg-white border border-gray-500 rounded-[2rem] p-6 md:p-8 lg:p-12 pt-6 lg:pt-8">
                     <h3 className="text-2xl font-bold text-gray-900 mb-1">Express Your Interest</h3>
                     <p className="text-sm text-gray-400 my-4 tracking-wide">Tell us about yourself and how you'd like to get involved.</p>
                     <div className="flex flex-col gap-4 mt-6">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                             <label className="text-md text-gray-700 uppercase tracking-wide block mb-1.5">First Name</label>
-                            <input type="text" placeholder="e.g. Bryan" className="w-full border border-gray-200 bg-gray-100 rounded-lg px-5 py-4 text-xs text-gray-700 placeholder-gray-500 outline-none focus:border-gray-700" />
+                            <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} placeholder="e.g. Bryan" className={`w-full border bg-gray-100 rounded-lg px-5 py-4 text-xs text-gray-700 placeholder-gray-500 outline-none ${errors.firstName ? 'border-red-400' : 'border-gray-200 focus:border-gray-700'}`} />
+                            {errors.firstName && <p className="text-red-500 text-[10px] mt-1">{errors.firstName}</p>}
                         </div>
                         <div>
                             <label className="text-md text-gray-700 uppercase tracking-wide block mb-1.5">Last Name</label>
-                            <input type="text" placeholder="e.g. Wayer" className="w-full border border-gray-200 bg-gray-100 rounded-lg px-5 py-4 text-xs text-gray-700 placeholder-gray-400 outline-none focus:border-gray-700" />
+                            <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} placeholder="e.g. Wayer" className={`w-full border bg-gray-100 rounded-lg px-5 py-4 text-xs text-gray-700 placeholder-gray-400 outline-none ${errors.lastName ? 'border-red-400' : 'border-gray-200 focus:border-gray-700'}`} />
+                            {errors.lastName && <p className="text-red-500 text-[10px] mt-1">{errors.lastName}</p>}
                         </div>
                         </div>
                         <div>
                         <label className="text-md text-gray-700 uppercase tracking-wide block mb-1.5">Email</label>
-                        <input type="email" placeholder="your@email.com" className="w-full border border-gray-200 rounded-lg bg-gray-100 px-5 py-4 text-xs text-gray-700 placeholder-gray-400 outline-none focus:border-gray-700" />
+                        <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="your@email.com" className={`w-full border rounded-lg bg-gray-100 px-5 py-4 text-xs text-gray-700 placeholder-gray-400 outline-none ${errors.email ? 'border-red-400' : 'border-gray-200 focus:border-gray-700'}`} />
+                        {errors.email && <p className="text-red-500 text-[10px] mt-1">{errors.email}</p>}
                         </div>
                         <div>
                         <label className="text-md text-gray-700 uppercase tracking-wide block mb-1.5">Organization / School</label>
-                        <input type="text" placeholder="Where do you work?" className="w-full border border-gray-200 rounded-lg px-5 py-4 bg-gray-100 text-xs text-gray-700 placeholder-gray-400 outline-none focus:border-gray-700" />
+                        <input type="text" name="organization" value={formData.organization} onChange={handleChange} placeholder="Where do you work?" className="w-full border border-gray-200 rounded-lg px-5 py-4 bg-gray-100 text-xs text-gray-700 placeholder-gray-400 outline-none focus:border-gray-700" />
                         </div>
                         <div>
                         <label className="text-md text-gray-700 uppercase tracking-wide block mb-1.5">I Am Interested In....</label>
-                        <select className="w-full border border-gray-200 rounded-lg px-5 py-4 text-xs text-gray-400 bg-gray-100 outline-none focus:border-gray-700 appearance-none">
-                            <option value="" disabled selected>Select an option</option>
+                        <select name="interest" value={formData.interest} onChange={handleChange} className={`w-full border rounded-lg px-5 py-4 text-xs text-gray-400 bg-gray-100 outline-none appearance-none ${errors.interest ? 'border-red-400' : 'border-gray-200 focus:border-gray-700'}`}>
+                            <option value="" disabled>Select an option</option>
                             <option value="volunteer">Volunteering</option>
                             <option value="partner">Partnering</option>
                             <option value="donate">Donating</option>
                         </select>
+                        {errors.interest && <p className="text-red-500 text-[10px] mt-1">{errors.interest}</p>}
                         </div>
                         <div>
                         <label className="text-md text-gray-700 uppercase tracking-wide block mb-1.5">Your Message</label>
-                        <textarea placeholder="Tell us a little about yourself and what you're hoping to explore.." rows={3} className="w-full border border-gray-200 bg-gray-100 rounded-lg px-5 py-4 text-xs text-gray-700 placeholder-gray-400 outline-none focus:border-gray-700 resize-none" />
+                        <textarea name="message" value={formData.message} onChange={handleChange} placeholder="Tell us a little about yourself and what you're hoping to explore.." rows={3} className={`w-full border bg-gray-100 rounded-lg px-5 py-4 text-xs text-gray-700 placeholder-gray-400 outline-none resize-none ${errors.message ? 'border-red-400' : 'border-gray-200 focus:border-gray-700'}`} />
+                        {errors.message && <p className="text-red-500 text-[10px] mt-1">{errors.message}</p>}
                         </div>
-                        <button className="w-full py-3 rounded-lg text-white text-sm font-semibold flex items-center justify-center gap-3 mt-4" style={{ backgroundColor: '#1C5035' }}>Send →</button>
+                        <button onClick={handleSend} className="w-full py-3 rounded-lg text-white text-sm font-semibold flex items-center justify-center gap-3 mt-4" style={{ backgroundColor: '#1C5035' }}>Send →</button>
                     </div>
                     </div>
                 </div>

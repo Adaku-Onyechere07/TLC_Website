@@ -70,8 +70,8 @@ const Foundation = () => {
         <div className="relative w-full h-full">
           <img loading="lazy" src={bg} alt="Description" className="w-full md:max-h-[700px] fit-stretch" />
           <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <h1 className="text-white text-[36px] md:text-[44px] mt-20 lg:text-[55px] font-bold">Our Mission</h1>
-            <img loading="lazy" src={mission} className="w-full max-w-2xl lg:w-7xl lg:h-7xl p-10 object-contain" />
+            <h1 className="text-white text-[30px] md:text-[44px] mt-20 lg:text-[55px] font-bold">Our Mission</h1>
+            <img loading="lazy" src={mission} className="w-full max-w-2xl lg:w-7xl lg:h-7xl px-5 pb-15 md:p-10 object-contain" />
           </div>
         </div>
       </div>
@@ -81,11 +81,11 @@ const Foundation = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-15 leading-loose">
                 {coreOfferings.map((card, i) => (
                 <motion.div key={card.title} {...inView(i * 0.1)} className="relative">
-                    <div className="bg-white flex flex-col px-6 lg:px-8 py-10 lg:py-12 rounded-2xl drop-shadow-lg shadow-black/100 min-h-[300px] h-[460px] lg:h-[420px]">
+                    <div className="bg-white flex flex-col px-6 lg:px-8 py-10 lg:py-12 rounded-2xl drop-shadow-lg shadow-black/100 min-h-[300px] lg:h-[420px]">
                     <div className="absolute bottom-0 right-0 w-22 h-22 bg-black/10" style={{ borderRadius: '14px 0 20px 0' }} />
                     <p className="text-gray-900 font-medium text-xl lg:text-2xl mb-6">{card.title}</p>
-                    <p className="text-md lg:text-sm text-gray-500 leading-loose mb-8 flex-1">{card.desc}</p>
-                    <p onClick={() => navigate('/foundation/programs')} className="text-[#1a5c2e] font-semibold uppercase text-lg leading-loose cursor-pointer hover:underline">LEARN MORE</p>
+                    <p className="text-sm text-gray-500 leading-loose mb-8 flex-1">{card.desc}</p>
+                    <p onClick={() => navigate('/foundation/programs')} className="text-[#1a5c2e] font-semibold uppercase text-md md:text-lg leading-loose cursor-pointer hover:underline">LEARN MORE</p>
                 </div>
                 <button onClick={() => navigate('/foundation/programs')} className="absolute bottom-0 right-0 bg-[#1a5c2e] rounded-tl-2xl rounded-br-2xl w-20 h-20 flex items-center justify-center hover:bg-[#154a24] transition-colors shadow-lg">
                     <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -112,7 +112,7 @@ const Foundation = () => {
               <p className="text-[28px] font-bold text-gray-900 leading-none">{card.num}</p>
             <div className="relative z-10 flex flex-col gap-3">              
              <p className="text-[17px] py-3 font-semibold text-gray-900">{card.title}</p>
-              <p className="text-[15px] tracking-wide text-gray-600 leading-relaxed">{card.body}</p>
+              <p className="text-xs md:text-[15px] tracking-wide text-gray-600 leading-relaxed">{card.body}</p>
               {card.list && (
                 <ol className="text-[13px] text-gray-500 leading-loose list-decimal list-inside">
                   {card.list.map((item) => <li key={item}>{item}</li>)}
@@ -134,7 +134,7 @@ const Foundation = () => {
           <p className="text-[28px] font-bold text-gray-900 leading-none">{card.num}</p>
           <div className="relative z-10 flex flex-col gap-3">
             <p className="text-[17px] py-3 font-semibold text-gray-900">{card.title}</p>
-            <p className="text-[15px] tracking-wide text-gray-600 leading-relaxed">{card.body}</p>
+            <p className="text-xs md:text-[15px] tracking-wide text-gray-600 leading-relaxed">{card.body}</p>
           </div>
           </div>
           </motion.div>
@@ -149,12 +149,12 @@ const Foundation = () => {
 
         <div className="px-6 md:px-16 lg:px-30">
           <motion.div {...inView()} className="font-thin text-[28px] lg:text-[36px] max-w-[750px] py-10">Initiatives</motion.div>
-          <motion.div {...inView(0.1)} className="bg-[#89853C] rounded-4xl min-h-[400px] lg:h-[80vh] w-full p-6 lg:p-10">
+          <motion.div {...inView(0.1)} className="bg-[#89853C] rounded-4xl min-h-[400px] lg:h-[80vh] w-full p-4 md:p-6 lg:p-10">
            <div className="bg-gray-200 h-full rounded-3xl flex flex-col lg:flex-row">
                 <div className="flex flex-col justify-center gap-4 w-full lg:w-[40%] px-6 lg:px-10 py-8 lg:py-10">
-                    <h1 className="text-xl font-bold">The TLCF SEL Prize</h1>
-                    <div className="text-gray-700 leading-relaxed text-sm tracking-wide leading-loose">The TLCF SEL Prize challenges students and teachers to design community-based projects that address an annual SEL theme, with winners celebrated across our platforms.
-                    <p className="text-gray-700 leading-relaxed text-md tracking-wide py-2 leading-loose">Our inaugural theme is The Kindness Challenge — inviting schools to create meaningful projects rooted in empathy, compassion, and SEL principles. Because kindness isn't a one-time act; it's a way of life.</p>
+                    <h1 className="text-lg md:text-xl font-bold">The TLCF SEL Prize</h1>
+                    <div className="text-gray-700 leading-relaxed text-xs md:text-sm tracking-wide leading-loose">The TLCF SEL Prize challenges students and teachers to design community-based projects that address an annual SEL theme, with winners celebrated across our platforms.
+                    <p className="text-gray-700 leading-relaxed text-xs md:text-md tracking-wide py-2 leading-loose">Our inaugural theme is The Kindness Challenge — inviting schools to create meaningful projects rooted in empathy, compassion, and SEL principles. Because kindness isn't a one-time act; it's a way of life.</p>
                     <p className="text-black font-semibold leading-relaxed text-md tracking-wide leading-loose">Follow our social media platforms for participation details.</p></div>
                 </div>
                 <div className="w-full lg:w-[60%]">
@@ -166,7 +166,7 @@ const Foundation = () => {
 
         <div className="px-6 md:px-12 lg:px-20 py-10 lg:py-15">
           <hr className="border-t border-gray-200 w-screen relative left-1/2 -translate-x-1/2 pb-5" />
-          <motion.div {...inView()} className="font-thin text-[28px] lg:text-[36px] max-w-[750px] pt-10 lg:pt-15">#EducationCannotWait</motion.div>
+          <motion.div {...inView()} className="font-thin text-[24px] lg:text-[36px] max-w-[750px] pt-10 lg:pt-15">#EducationCannotWait</motion.div>
           <motion.p {...inView(0.05)} className="text-sm text-gray-400 tracking-wide pt-5 pb-10 lg:pb-15">Tell us about yourself and how you'd like to get involved.</motion.p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-15 leading-loose pb-10 lg:pb-15">
                 {cards.map((card, i) => (
@@ -175,7 +175,7 @@ const Foundation = () => {
                     <span className="text-yellow-400 text-3xl leading-none pb-1">★</span>
                     </div>
                     <p className="font-bold text-gray-900 text-lg mb-4">{card.title}</p>
-                    <p className="text-md text-gray-500 leading-relaxed mb-8">{card.desc}</p>
+                    <p className="text-sm md:text-md text-gray-500 leading-relaxed mb-8">{card.desc}</p>
                     <ul className="flex flex-col gap-6 mb-7 flex-1">
                     {card.items.map((item) => (
                         <li key={item} className="flex items-start gap-2 text-xs text-gray-700 tracking-widest">

@@ -3,7 +3,7 @@ import welcomeImage from "../assets/images/ee515d2d2ce7b31f8846d0f34f11d7f71b24f
 import programs from "../assets/images/the-learning-craft-logo.png"
 import workbooks from "../assets/images/12ce44292d56eacb6951984f01067346bea85be3.png"
 import toolkits from "../assets/images/fc6474610475e15f19972bd1be904aba8860a722.png"
-import pascel from "../assets/images/25bceda049d2670c50694d264ba814105305eb46.jpg"
+import pacsel from "../assets/images/25bceda049d2670c50694d264ba814105305eb46.jpg"
 import { motion } from 'framer-motion'
 import teta from "../assets/images/355a3ad3e7d8fb0b8ff3151bb61596ee0acdacde.png"
 import planner from "../assets/images/214cace7acea5cda047aa60b37ae6b76d5b37420.png"
@@ -31,6 +31,7 @@ const HomePage = () => {
 
     const autoScroll = () => {
       if (isHoveredRef.current) return
+      if (window.innerWidth < 1024) return
 
       const { scrollLeft, scrollWidth, clientWidth } = container
       const atEnd = scrollLeft + clientWidth >= scrollWidth - 10
@@ -52,7 +53,7 @@ const HomePage = () => {
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && window.innerWidth >= 1024) {
           animationRef.current = window.setInterval(autoScroll, intervalMs)
         } else {
           if (animationRef.current) clearInterval(animationRef.current)
@@ -91,7 +92,7 @@ const HomePage = () => {
 
           <div className="flex flex-col lg:flex-row items-center justify-between max-w-7xl mx-auto gap-8 lg:gap-0">
             <div className="flex flex-col gap-6 lg:gap-9 max-w-[700px]">
-              <span className="w-auto lg:w-[50%] text-[12px] font-bold bg-[#d5fcee]/30 border border-[#119B53] text-[#119B53] rounded-full px-5 py-2 flex items-center justify-center gap-1 self-start">
+              <span className="w-auto lg:w-[60%] text-[10px] md:text-[12px] font-bold bg-[#d5fcee]/30 border border-[#119B53] text-[#119B53] rounded-full px-5 py-2 flex items-center justify-center gap-1 self-start">
                  <FaGraduationCap className="h-4 w-4 text-[#119B53]" />REVOLUTIONIZING AFRICAN EDUCATION
               </span>
 
@@ -106,11 +107,11 @@ const HomePage = () => {
                 and evidence-based SEL practices.
               </p>
 
-              <div className="flex gap-6 lg:gap-15">
-                <button onClick={() => navigate('/resources')} className="bg-[#119B53] text-white text-md font-medium px-6 lg:px-8 py-3 lg:py-4 rounded-lg shadow-xl shadow-black/10">
+              <div className="flex gap-4 lg:gap-15">
+                <button onClick={() => navigate('/resources')} className="bg-[#119B53] text-white text-sm md:text-md font-medium px-4 lg:px-8 py-3 lg:py-4 rounded-lg shadow-xl shadow-black/10">
                   Explore Resources
                 </button>
-                <button onClick={() => navigate('/about')} className="bg-black text-white text-md font-medium px-8 lg:px-10 py-3 lg:py-4 rounded-lg shadow-xl shadow-black/10">
+                <button onClick={() => navigate('/about')} className="bg-black text-white text-sm md:text-md font-medium px-4 lg:px-10 py-3 lg:py-4 rounded-lg shadow-xl shadow-black/10">
                   Our Mission
                 </button>
               </div>
@@ -134,8 +135,8 @@ const HomePage = () => {
           <div className="font-thin text-[28px] lg:text-[40px] max-w-[750px] py-10">
             One community, built for teaching and learning
           </div>
-          <div className="flex flex-col md:flex-row gap-6 lg:gap-10 items-center justify-between h-full">
-            <div onClick={() => navigate('/programs')} className="h-[400px] lg:h-[500px] w-full md:w-[26vw] border border-gray-200 rounded-[2rem] flex flex-col cursor-pointer hover:shadow-md transition-shadow">
+          <div className="flex flex-row gap-3 md:gap-4 lg:gap-6 items-center justify-between h-fit overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+            <div onClick={() => navigate('/programs')} className="h-[400px] md:h-[450px] lg:h-[500px] w-[300px] md:w-[26vw] border border-gray-200 rounded-[2rem] flex flex-col cursor-pointer hover:shadow-md transition-shadow">
               <div className="flex-1 flex items-center justify-center">
                 <div className="bg-gradient-to-b from-[#1C5035] to-[#24B66B] rounded-full p-8 h-32 w-32 lg:h-40 lg:w-40 flex items-center justify-center">
                   <img loading="lazy" src={programs} alt="" />
@@ -146,60 +147,59 @@ const HomePage = () => {
                   <p className="font-bold text-xl">Programs</p>
                   <p className="text-[12px] font-medium text-gray-500">Explore many great programs TLC has to offer.</p>
                 </div>
-                <FaArrowRight className="size-9 h-full flex items-center justify-center pr-5" />
+                <FaArrowRight className="size-12 md:size-9 h-full flex items-center justify-center pr-5" />
               </div>
             </div>
-            <div onClick={() => navigate('/resources/sel-workbooks')} className="h-[400px] lg:h-[500px] w-full md:w-[26vw] border border-gray-200 rounded-[2rem] flex flex-col cursor-pointer hover:shadow-md transition-shadow">
+            <div onClick={() => navigate('/resources/sel-workbooks')} className="h-[400px] md:h-[450px] lg:h-[500px] w-[300px] md:w-[26vw] border border-gray-200 rounded-[2rem] flex flex-col cursor-pointer hover:shadow-md transition-shadow">
               <div className="flex-1 flex items-center justify-center">
                   <img loading="lazy" src={workbooks} alt="" className="p-8 h-60 w-60 lg:h-80 lg:w-80 flex items-center justify-center" />
               </div>
               <div className="flex flex-row items-center justify-center bg-gray-200 border-b border-b-gray-200 rounded-b-[2rem] gap-6">
-                <div className="flex flex-col bg-gray-200 py-8 px-6 gap-1 rounded-b-[2rem]">
+                <div className="flex flex-col bg-gray-200 py-8 md:py-6 lg:py-8 px-6 gap-1 rounded-b-[2rem]">
                   <p className="font-bold text-xl">Workbooks</p>
                   <p className="text-[12px] font-medium text-gray-500">Access essential resources to supercharge learning.</p>
                 </div>
-                <FaArrowRight className="size-9 h-full flex items-center justify-center pr-5" />
+                <FaArrowRight className="size-12 lg:size-9 h-full flex items-center justify-center pr-5" />
               </div>
             </div>
-            <div onClick={() => navigate('/resources/ndu-sel-toolkit')} className="h-[400px] lg:h-[500px] w-full md:w-[26vw] border border-gray-200 rounded-[2rem] flex flex-col cursor-pointer hover:shadow-md transition-shadow">
+            <div onClick={() => navigate('/resources/ndu-sel-toolkits')} className="h-[400px] md:h-[450px] lg:h-[500px] w-[300px] md:w-[26vw] border border-gray-200 rounded-[2rem] flex flex-col cursor-pointer hover:shadow-md transition-shadow">
               <div className="flex-1 flex items-center justify-center">
-                  <img loading="lazy" src={toolkits} alt="" className="p-8 h-48 w-64 lg:h-60 lg:w-80 flex items-center justify-center" />
+                  <img loading="lazy" src={toolkits} alt="" className="p-8 h-40 w-60 lg:h-60 lg:w-80 flex items-center justify-center" />
               </div>
               <div className="flex flex-row items-center justify-center bg-gray-200 border-b border-b-gray-200 rounded-b-[2rem] gap-6">
                 <div className="flex flex-col bg-gray-200 py-8 px-6 gap-1 rounded-b-[2rem]">
-                  <p className="font-bold text-xl">SEL Toolkits</p>
+                  <p className="font-bold text-xl">SEL&nbsp;Toolkits</p>
                   <p className="text-[12px] font-medium text-gray-500">Access essential teaching resources at your disposal.</p>
                 </div>
-                <FaArrowRight className="size-9 h-full flex items-center justify-center pr-5" />
+                <FaArrowRight className="size-12 md:size-9 h-full flex items-center justify-center pr-5" />
               </div>
             </div>
           </div>
-          <motion.div className="flex flex-col lg:flex-row justify-between min-h-[50vh] lg:min-h-[70vh] w-full rounded-[2rem] bg-[#1C5035] my-20 overflow-hidden drop-shadow-2xl shadow-black/30"
-              initial={{ opacity: 0, y: 70 }}
+          <motion.div className="flex flex-col lg:flex-row justify-between h-fit md:h-fit w-full rounded-[2rem] bg-[#1C5035] my-20 overflow-hidden drop-shadow-2xl shadow-black/30"              initial={{ opacity: 0, y: 70 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2 , ease: 'easeInOut' }}
               viewport={{ once: true }}>
-            <div className="flex flex-col gap-6 lg:gap-8 w-full lg:max-w-1/2 px-8 lg:px-15 py-12 lg:py-20 text-white">
-              <span className="w-fit text-[14px] font-bold text-[#4BB04F] tracking-widest uppercase">
+            <div className="flex flex-col gap-6 lg:gap-8 w-full lg:max-w-1/2 px-6 lg:px-15 py-12 lg:py-20 text-white">
+              <span className="w-fit text-xs md:text-[14px] font-bold text-[#4BB04F] tracking-widest uppercase">
                 FLAGSHIP INITIATIVE
               </span>
 
-              <h1 className="text-[28px] lg:text-[38px] font-extrabold leading-tight">
+              <h1 className="text-[24px] lg:text-[38px] font-extrabold leading-tight">
                 PACSEL: Pan-African Conference on Social Emotional Learning
               </h1>
 
-              <p className="text-gray-300 text-md leading-relaxed md:max-w-[400px]">
+              <p className="text-gray-300 text-sm md:text-md leading-relaxed md:max-w-[400px]">
                 The largest gathering of educators, policy makers, and researchers in Africa dedicated to scaling SEL across the continent.
               </p>
 
               <div className="flex gap-6 lg:gap-15">
-                <button onClick={() => navigate('/foundation/pascel')} className="bg-[#119B53] text-white text-md font-medium px-8 py-4 rounded-lg shadow-xl shadow-black/10">
+                <button onClick={() => navigate('/foundation/pacsel')} className="bg-[#119B53] text-white text-md font-medium px-6 md:px-8 py-2 md:py-4 rounded-lg shadow-xl shadow-black/10">
                   Learn More
                 </button>
               </div>
             </div>
-            <div className="w-full lg:w-1/2 self-stretch h-60 lg:h-auto">
-              <img loading="lazy" src={pascel} alt="" className="h-full w-full object-cover rounded-b-[2rem] lg:rounded-b-none lg:rounded-r-[2rem]" />
+            <div className="w-full lg:w-1/2 self-stretch h-60 lg:h-auto md:block hidden">
+              <img loading="lazy" src={pacsel} alt="" className="h-full w-full hidden md:inline object-cover rounded-b-[2rem] lg:rounded-b-none lg:rounded-r-[2rem]" />
             </div>
           </motion.div>
           <div className="border-t-gray-500 h-full">
@@ -402,25 +402,25 @@ const HomePage = () => {
           </div>
 
           <hr className="border-t border-gray-200 w-screen relative left-1/2 -translate-x-1/2 mt-10" />
-          <motion.div className="flex flex-col lg:flex-row justify-between min-h-[50vh] lg:min-h-[80vh] w-full rounded-[2rem] bg-[#1C5035] my-20 overflow-hidden drop-shadow-2xl shadow-black/30"
+          <motion.div className="flex flex-col lg:flex-row justify-between min-h-[50vh] lg:min-h-[80vh] w-full rounded-2xl md:rounded-[2rem] bg-[#1C5035] my-20 overflow-hidden drop-shadow-2xl shadow-black/30"
             initial={{ opacity: 0, x: 100 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             viewport={{ once: true }}>
               <div className="flex flex-row gap-6 lg:gap-10 relative">
                 <div className="flex flex-col gap-6 lg:gap-8 max-w-full lg:max-w-[700px] px-8 lg:px-15 py-12 lg:py-20 text-white">
-                <span className="w-fit text-[16px] lg:text-[20px] font-medium text-WHITE tracking-widest uppercase">
+                <span className="w-fit text-[12px] lg:text-[20px] font-medium text-WHITE tracking-widest uppercase">
                   READY TO CRAFT THE FUTURE?
                 </span>
 
-                <h1 className="text-[28px] lg:text-[40px] font-black tracking-wide">
+                <h1 className="text-[24px] md:text-[40px] font-black tracking-wide">
                   Join the Movement Building Africa's Tourism Future
                 </h1>
-                <div className="flex gap-6 lg:gap-15">
-                  <button onClick={() => navigate('/resources')} className="bg-white text-black text-md font-medium px-6 lg:px-8 py-3 lg:py-4 rounded-lg shadow-xl shadow-black/10">
+                <div className="flex gap-5 lg:gap-15">
+                  <button onClick={() => navigate('/resources')} className="bg-white text-black text-xs md:text-md font-medium px-2 md:px-8 py-2 md:py-4 rounded-lg shadow-xl shadow-black/10">
                     Our Products
                   </button>
-                  <button onClick={() => navigate('/get-involved')} className="text-white border border-white text-md font-medium px-6 lg:px-8 py-3 lg:py-4 rounded-lg shadow-xl shadow-black/10">
+                  <button onClick={() => navigate('/get-involved')} className="text-white border border-white text-xs md:text-md font-medium px-2 md:px-8 py-2 md:py-4 rounded-lg shadow-xl shadow-black/10">
                     Partner with Us
                   </button>
                 </div>

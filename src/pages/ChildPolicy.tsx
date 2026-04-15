@@ -11,7 +11,7 @@ const ChildPolicy = () => {
             <hr className="border-t border-gray-200 w-screen relative left-1/2 -translate-x-1/2 pb-5" />
             <h1 className='uppercase text-[14px] lg:text-[24px] tracking-widest'>Last Updated: 25th, March, 2026</h1>
             <h1 className='text-[36px] md:text-[48px] lg:text-[56px] tracking-wider'>Child Policy</h1>
-            <button onClick={() => navigate(-1)} className="mt-4 font-thin">
+            <button onClick={() => navigate(-1)} className="mt-4 font-thin hover:underline">
                 ← Go back
             </button>
             <hr className="border-t border-gray-200 w-screen relative left-1/2 -translate-x-1/2 pt-5" />

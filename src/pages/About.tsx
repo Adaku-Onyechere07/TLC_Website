@@ -58,9 +58,9 @@ const About = () => {
                 <FaRegLightbulb className="text-[#119B53] size-6" />
                 </div>
                 <div className="flex flex-col w-full gap-4">
-                <h1 className="text-xl font-bold">OUR MISSION</h1>
+                <h1 className="text-lg md:text-xl font-bold">OUR MISSION</h1>
                 <hr className="border-t-2 border-[#119B53] w-full rounded-lg" />
-                <p className="leading-relaxed text-black w-full lg:w-[80%]">
+                <p className="leading-relaxed text-xs md:text-md text-black w-full lg:w-[80%]">
                     Empowering African learners, educators, and communities through innovative education solutions, collaborative partnerships, and advocacy, to unlock their full potential and drive sustainable development.
                 </p>
                 </div>
@@ -73,9 +73,9 @@ const About = () => {
                 <FaGlobe className="text-[#119B53] size-6" />
                 </div>
                 <div className="flex flex-col w-full gap-4">
-                <h1 className="text-xl font-bold">OUR VISION</h1>
+                <h1 className="text-lg md:text-xl font-bold">OUR VISION</h1>
                 <hr className="border-t-2 border-[#119B53] w-full rounded-lg" />
-                <p className="leading-relaxed text-black w-full lg:w-[80%]">
+                <p className="leading-relaxed text-md md:text-xs text-black w-full lg:w-[80%]">
                     A future where African learners unlock their potential, driving prosperity, peace, and equity across the continent.
                 </p>
                 </div>

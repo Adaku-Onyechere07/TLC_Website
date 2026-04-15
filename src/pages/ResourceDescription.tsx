@@ -126,7 +126,7 @@ const RESOURCES: ResourceDetail[] = [
     image: curriculumPlannerImg,
     description: (
       <>
-        <p className="mb-3 text-lg leading-relaxed text-black">
+        <p className="mb-3 text-sm md:text-lg leading-relaxed text-black">
           The Learning Craft collaborates with schools and institutions to design impactful solutions that lead to desirable outcomes.
         </p>
         <p className="mb-2 text-sm font-semibold text-gray-800">Schools &amp; Learners</p>
@@ -175,7 +175,7 @@ const RESOURCES: ResourceDetail[] = [
     image: tetaImg,
     description: (
       <>
-        <p className="mb-3 text-lg font-semibold text-gray-800">Cultivating a New Generation of Exceptional Educators</p>
+        <p className="mb-3 text-sm md:text-lg font-semibold text-gray-800">Cultivating a New Generation of Exceptional Educators</p>
         <p className="mb-3 text-sm leading-relaxed text-black">
           TETA is a comprehensive year-long teacher training solution that aims to cultivate a new generation of educators. This programme focuses on upskilling teachers, elevating their status, and increasing their value, all to foster excellence in teaching.
         </p>
@@ -201,7 +201,7 @@ const RESOURCES: ResourceDetail[] = [
     image: ccaImg,
     description: (
       <>
-        <p className="mb-3 text-lg font-semibold text-gray-800">Equipping Curriculum Leaders for Impact</p>
+        <p className="mb-3 text-sm md:text-lg font-semibold text-gray-800">Equipping Curriculum Leaders for Impact</p>
         <p className="mb-3 text-sm leading-relaxed text-black">
           CCA is a comprehensive year-long teacher training solution that aims to cultivate a new generation of educators. This programme focuses on upskilling teachers, elevating their status, and increasing their value, all to foster excellence in teaching.
         </p>
@@ -225,7 +225,7 @@ const RESOURCES: ResourceDetail[] = [
     image: dyslexicsImg,
     description: (
       <>
-        <p className="mb-3 text-lg font-semibold text-gray-800">A Practical Guide for Inclusive Education</p>
+        <p className="mb-3 text-sm md:text-lg font-semibold text-gray-800">A Practical Guide for Inclusive Education</p>
         <p className="mb-3 text-sm leading-relaxed text-black">
           A practical, evidence-based guide for classroom teachers and school leaders on identifying dyslexia, designing inclusive lessons, and supporting affected learners.
         </p>
@@ -250,7 +250,7 @@ const RESOURCES: ResourceDetail[] = [
     image: schoolCoherenceImg,
     description: (
       <>
-        <p className="mb-3 text-lg font-semibold text-gray-800">Aligning Your School for Better Outcomes</p>
+        <p className="mb-3 text-sm md:text-lg font-semibold text-gray-800">Aligning Your School for Better Outcomes</p>
         <p className="mb-3 text-sm leading-relaxed text-black">
           A practical leadership toolkit that helps school leaders identify and fix the structural misalignments causing low-trust and incoherent learning outcomes.
         </p>
@@ -273,7 +273,7 @@ const RESOURCES: ResourceDetail[] = [
     image: teachartImg,
     description: (
       <>
-        <p className="mb-3 text-lg font-semibold text-gray-800">A Peer-Led Platform for Educators</p>
+        <p className="mb-3 text-sm md:text-lg font-semibold text-gray-800">A Peer-Led Platform for Educators</p>
         <p className="mb-3 text-sm leading-relaxed text-black">
           A dynamic peer-led platform where teachers share ideas, insights, and innovations in education — inspiring and equipping one another to elevate their practice.
         </p>
@@ -292,7 +292,7 @@ const RESOURCES: ResourceDetail[] = [
     image: customCurriculumImg,
     description: (
       <>
-        <p className="mb-3 text-lg font-semibold text-gray-800">Bespoke Curriculum Design for Your Context</p>
+        <p className="mb-3 text-sm md:text-lg font-semibold text-gray-800">Bespoke Curriculum Design for Your Context</p>
         <p className="mb-3 text-sm leading-relaxed text-black">
           A bespoke curriculum design service where The Learning Craft works directly with schools and organisations to build tailored, skills-based learning experiences aligned to their unique goals and context.
         </p>
@@ -414,8 +414,8 @@ export default function ResourceDescription() {
   if (!resource) {
     return (
       <div className="px-8 py-16 text-center text-gray-500">
-        <p className="text-lg font-medium">Resource not found.</p>
-        <button onClick={() => navigate(-1)} className="mt-4 text-[#1a5c2e] font-thin">
+        <p className="text-md md:text-lg font-medium">Resource not found.</p>
+        <button onClick={() => navigate(-1)} className="mt-4 text-[#1a5c2e] font-thin hover:underline">
           ← Go back
         </button>
       </div>

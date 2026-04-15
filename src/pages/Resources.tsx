@@ -360,7 +360,7 @@ function ResourceCard({ card, onNavigate }: { card: Card; onNavigate: (path: str
       )}
 
       <h3 className="text-gray-900 font-bold text-[15px] lg:text-[17px] pt-3 leading-snug">{card.title}</h3>
-      <p className="text-gray-500 text-[13px] tracking-wide py-4 leading-relaxed flex-1">{card.description}</p>
+      <p className="text-gray-500 text-xs md:text-[13px] tracking-wide py-4 leading-relaxed flex-1">{card.description}</p>
       <div className="flex items-center justify-between mt-auto pt-1 gap-2 flex-wrap">
         <div className="flex flex-wrap gap-1.5">
           {card.tags.map((t) => (
@@ -441,13 +441,13 @@ export default function ResourceHub() {
           />
           <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b via-transparent to-white pointer-events-none" />
 
-          <div className="flex flex-col lg:flex-row items-center justify-between mx-auto gap-8 lg:gap-0">
-            <motion.div className="flex flex-col gap-6 lg:gap-9 max-w-8xl" initial={{opacity:0,y:36}} animate={{opacity:1,y:0}} transition={{duration:0.8,ease:[0.16,1,0.3,1]}}>
-              <span className="w-auto lg:w-[50%] text-[12px] font-bold bg-[#d5fcee]/30 border border-[#119B53] text-[#119B53] rounded-full px-5 py-2 flex items-center justify-center gap-1 self-start">
+          <div className="flex flex-col lg:flex-row items-center justify-between sm:px-4 mx-auto gap-8 lg:gap-0">
+            <motion.div className="flex flex-col gap-6 lg:gap-9 md:justify-center px-3 md:px-0 max-w-screen md:max-w-8xl" initial={{opacity:0,y:36}} animate={{opacity:1,y:0}} transition={{duration:0.8,ease:[0.16,1,0.3,1]}}>
+              <span className="w-fit md:w-[60%] text-[12px] font-bold bg-[#d5fcee]/30 border border-[#119B53] text-[#119B53] rounded-full px-3 md:px-5 py-2 flex items-center justify-center gap-1 self-start">
                  <FaGraduationCap className="h-4 w-4 text-[#119B53]" />REVOLUTIONIZING AFRICAN EDUCATION
               </span>
 
-              <h1 className="text-[36px] md:text-[48px] lg:text-[60px] font-bold leading-tight">
+              <h1 className="text-[30px] md:text-[48px] lg:text-[60px] font-bold leading-tight">
                 SEL Resources & <br />
                 <span className="text-[#119B53]">Designed for Success.</span>
               </h1>
@@ -462,13 +462,13 @@ export default function ResourceHub() {
                     <input
                       type="text"
                       placeholder="Search resources, toolkits, guides..."
-                      className="flex-1 text-gray-700 text-sm pl-4 lg:pl-6 py-4 outline-none bg-white placeholder-gray-400 min-w-0"
+                      className="flex-1 text-gray-700 text-sm pl-4 lg:pl-6 py-3 md:py-5 outline-none bg-white placeholder-gray-400 min-w-0"
                     />
-                    <button className="bg-[#119B53] text-white text-sm font-semibold px-4 lg:px-6 py-5 whitespace-nowrap hover:bg-[#0e8a48] transition-colors">
+                    <button className="bg-[#119B53] text-white text-sm font-semibold px-4 lg:px-6 py-3 md:py-6 whitespace-nowrap hover:bg-[#0e8a48] transition-colors">
                       Explore Programs
                     </button>
                   </div>                
-                  <button className="flex flex-row gap-2 bg-black text-white text-md font-medium px-6 lg:px-10 py-4 rounded-xl shadow-xl shadow-black/10 justify-center">
+                  <button className="flex flex-row gap-2 bg-black text-white text-md font-medium px-6 lg:px-10 py-3 md:py-5 rounded-xl shadow-xl shadow-black/10 justify-center">
                   Filter
                 </button>
               </div>
@@ -482,7 +482,6 @@ export default function ResourceHub() {
         <div className="w-full px-6 md:px-12 lg:px-20 py-10 lg:py-15 bg-gradient-to-b from-gray-100 to-white">
         <h1 className="text-2xl font-bold text-gray-900 mb-6">{TAB_TITLES[activeTab]}</h1>
 
-        {/* Tabs - scrollable on mobile */}
         <div className="flex overflow-x-auto gap-x-0 gap-y-0 border-b border-gray-200 mb-6 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
           {TABS.map((tab) => {
             const count = countForTab(tab.key);
@@ -506,7 +505,6 @@ export default function ResourceHub() {
           })}
         </div>
 
-        {/* Grid - 1 col mobile, 2 col tablet+ */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {paginated.map((card, i) => (
             <motion.div key={card.id} initial={{opacity:0,y:24}} whileInView={{opacity:1,y:0}} viewport={{once:true,margin:"-40px"}} transition={{duration:0.55,delay:i*0.06,ease:[0.16,1,0.3,1]}}>

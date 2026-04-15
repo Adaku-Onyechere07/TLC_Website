@@ -95,18 +95,18 @@ const Programs = () => {
           </motion.div>
           <div className="flex flex-col gap-10 lg:gap-15 items-center justify-center">
             <motion.div {...inView(0)} className="border border-gray-200 rounded-3xl flex flex-col lg:flex-row w-full">
-                <div className="flex flex-col gap-6 p-8 lg:p-20 w-full lg:w-1/2">
+                <div className="flex flex-col gap-6 p-8 lg:p-20 w-full lg:w-1/2 lg:border-r border-gray-200">
                     <h1 className="text-xl font-semibold">Climate-Responsive Digital Literacy</h1>
-                    <p className="text-gray-400 leading-relaxed text-md tracking-wide">Today's students are more connected than ever — and that connection comes with both extraordinary opportunity and real risk. The TLC Digital Citizenship Curriculum equips students across K–12 with the critical thinking, safety skills, and ethical grounding they need to thrive in a digital world. Rooted in climate-responsive digital literacy, the curriculum goes beyond screen time — it shapes how young people engage, create, and contribute online, responsibly.</p>
+                    <p className="text-gray-400 leading-relaxed text-xs md:text-md xl:text-lg tracking-wide">Today's students are more connected than ever — and that connection comes with both extraordinary opportunity and real risk. The TLC Digital Citizenship Curriculum equips students across K–12 with the critical thinking, safety skills, and ethical grounding they need to thrive in a digital world. Rooted in climate-responsive digital literacy, the curriculum goes beyond screen time — it shapes how young people engage, create, and contribute online, responsibly.</p>
                 </div>
                 <div className="w-full lg:w-1/2">
-                    <img loading="lazy" className="w-full aspect-video lg:aspect-auto lg:w-xl lg:h-xl object-cover lg:object-contain rounded-b-3xl lg:rounded-b-none lg:rounded-r-3xl border-t lg:border-t-0 lg:border-l border-gray-200" src={earth} alt="" />
+                    <img loading="lazy" className="w-full aspect-video lg:aspect-auto lg:w-lg lg:h-lg object-cover rounded-b-3xl lg:rounded-b-none lg:rounded-r-3xl border-t lg:border-t-0 border-gray-200" src={earth} alt="" />
                 </div>
             </motion.div>
             <motion.div {...inView(0.05)} className="border border-gray-200 rounded-3xl flex flex-col lg:flex-row w-full">
                 <div className="flex flex-col gap-6 p-8 lg:p-20 w-full lg:w-1/2">
                     <h1 className="text-xl font-semibold">Pads for Progress</h1>
-                    <p className="text-gray-400 leading-relaxed text-md tracking-wide">We support girls in underserved and under-resourced communities across Africa, tackling one of the most significant yet under-stated barriers to their education: Period Poverty. We work with communities to provide access to sanitary pads, and hygiene resources, so young girls can attend school with dignity and confidence. We aim to empower girls to reach their full potential and unlock a brighter future for themselves and their communities by addressing this hidden issue.</p>
+                    <p className="text-gray-400 leading-relaxed text-xs md:text-md xl:text-lg tracking-wide">We support girls in underserved and under-resourced communities across Africa, tackling one of the most significant yet under-stated barriers to their education: Period Poverty. We work with communities to provide access to sanitary pads, and hygiene resources, so young girls can attend school with dignity and confidence. We aim to empower girls to reach their full potential and unlock a brighter future for themselves and their communities by addressing this hidden issue.</p>
                 </div>
                 <div className="w-full lg:w-1/2">
                     <img loading="lazy" className="w-full aspect-video lg:aspect-auto lg:h-full object-cover rounded-b-3xl lg:rounded-b-none lg:rounded-r-3xl border-t lg:border-t-0 lg:border-l border-gray-200" src={pfp} alt="" />
@@ -115,15 +115,15 @@ const Programs = () => {
             <motion.div {...inView(0.1)} className="border border-gray-200 rounded-3xl flex flex-col lg:flex-row w-full">
                 <div className="flex flex-col p-8 lg:p-20 w-full lg:w-1/2">
                     <h1 className="text-xl font-semibold mb-6">Social & Emotional Learning Toolkit</h1>
-                    <p className="text-gray-400 leading-relaxed text-md tracking-wide">Our Ndu(R) Social and Emotional Learning (SEL) toolkit is a collection of proprietary resources, strategies, and activities designed to support the development of social and emotional skills in students from K to 9. Ndu(R) SEL It typically contains:</p>
-                    <ul className="text-gray-400">
+                    <p className="text-gray-400 leading-relaxed text-xs md:text-md xl:text-lg tracking-wide">Our Ndu(R) Social and Emotional Learning (SEL) toolkit is a collection of proprietary resources, strategies, and activities designed to support the development of social and emotional skills in students from K to 9. Ndu(R) SEL It typically contains:</p>
+                    <ul className="text-xs md:text-md xl:text-lg text-gray-400">
                         <li>1. Lesson plans and activities</li>
                         <li>2. Assessment tools (and possible surveys)</li>
                         <li>3. Teacher guides and training materials</li>
                         <li>4. Student worksheets and exercises</li>
                         <li>5. On request, "Strategies for classroom management and climate-building."</li>
                     </ul>
-                    <p className="text-gray-400 leading-relaxed text-md tracking-wide mt-6">The toolkit aims to help educators integrate SEL into their classroom teaching practices, promoting students' self-awareness, self-regulation, empathy, relationships, and responsible decision-making skills. Overall, it improves academic learning outcomes.</p>
+                    <p className="text-gray-400 leading-relaxed text-xs md:text-md xl:text-lg tracking-wide mt-6">The toolkit aims to help educators integrate SEL into their classroom teaching practices, promoting students' self-awareness, self-regulation, empathy, relationships, and responsible decision-making skills. Overall, it improves academic learning outcomes.</p>
 
                 </div>
                 <div className="w-full lg:w-1/2">
@@ -136,12 +136,12 @@ const Programs = () => {
         <div className="px-6 md:px-12 lg:px-20 py-10 md:py-20">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-15 leading-loose">
                 {cards.map((card, i) => (
-                <motion.div key={card.title} {...inView(i * 0.1)} className="bg-white border border-gray-500 rounded-2xl p-8 lg:p-10 flex flex-col">
+                <motion.div key={card.title} {...inView(i * 0.1)} className="bg-white border border-gray-500 rounded-2xl p-6 md:p-8 lg:p-10 flex flex-col">
                     <div className="w-10 h-10 rounded-full bg-[#1C5035] flex items-center justify-center mb-4">
                     <span className="text-yellow-400 text-3xl leading-none pb-1">★</span>
                     </div>
                     <p className="font-bold text-gray-900 text-lg mb-4">{card.title}</p>
-                    <p className="text-md text-gray-500 leading-relaxed mb-8">{card.desc}</p>
+                    <p className="text-sm md:text-md text-gray-500 leading-relaxed mb-8">{card.desc}</p>
                     <ul className="flex flex-col gap-6 mb-7 flex-1">
                     {card.items.map((item) => (
                         <li key={item} className="flex items-start gap-2 text-xs text-gray-700 tracking-widest">

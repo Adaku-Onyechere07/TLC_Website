@@ -3,7 +3,7 @@ import bg from "../assets/images/Property 1=Frame 286.png"
 import { motion } from 'framer-motion';
 import { FaGraduationCap } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
-import pascel from "../assets/images/1f0208b08eda505eb47e36676948cedea5748a96.jpg"
+import pacsel from "../assets/images/1f0208b08eda505eb47e36676948cedea5748a96.jpg"
 import mission from "../assets/images/Frame 499.png"
 import liyel from "../assets/images/liyel.png"
 import andreas from "../assets/images/andreas.jpg"
@@ -39,7 +39,7 @@ const inView = (delay = 0) => ({
   transition: { duration: 0.65, delay, ease: [0.16, 1, 0.3, 1] as any },
 })
 
-const PASCEL = () => {
+const PACSEL = () => {
   const navigate = useNavigate();
 
   const allImages = [img1, img2, img3, img4, img5]
@@ -48,11 +48,10 @@ const [rotation, setRotation] = useState(0)
 useEffect(() => {
   const id = setInterval(() => {
     setRotation((r) => (r + 1) % allImages.length)
-  }, 2000)
+  }, 5000)
   return () => clearInterval(id)
 }, [])
 
-// derive the current ordered set from the rotation offset
 const imgs = allImages.map((_, i) => allImages[(i + rotation) % allImages.length])
 
   return (
@@ -77,11 +76,11 @@ const imgs = allImages.map((_, i) => allImages[(i + rotation) % allImages.length
                 PACSEL convenes educators, policymakers, researchers, and practitioners to reimagine education - placing human development at the heart of learning systems across Africa.
               </p>
 
-              <div className="flex gap-6 lg:gap-15">
-                <button onClick={() => navigate('/foundation/pascel')} className="bg-[#F5C518] text-[#10502F] tracking-wide text-base lg:text-lg font-medium px-6 lg:px-8 py-3 lg:py-4 rounded-lg">
+              <div className="flex gap-4 lg:gap-10">
+                <button onClick={() => navigate('/foundation/pacsel')} className="bg-[#F5C518] text-[#10502F] tracking-wide text-sm lg:text-lg font-medium px-2 lg:px-6 py-3 lg:py-4 rounded-lg">
                   Conference Highlights
                 </button>
-                <button onClick={() => navigate('/get-involved')} className="text-white border border-white tracking-wide text-base lg:text-lg font-medium px-8 lg:px-10 py-3 lg:py-4 rounded-lg">
+                <button onClick={() => navigate('/get-involved')} className="text-white border border-white tracking-wide text-sm lg:text-lg font-medium px-2 lg:px-6 py-3 lg:py-4 rounded-lg">
                   Contact Us
                 </button>
               </div>
@@ -93,7 +92,7 @@ const imgs = allImages.map((_, i) => allImages[(i + rotation) % allImages.length
               transition={{ duration: 1.0 , ease: 'easeOut' }}
               viewport={{ once: true }}>
               <img loading="lazy"
-                src={pascel}
+                src={pacsel}
                 alt=""
                 className="w-full h-full object-cover"
               />
@@ -119,15 +118,15 @@ const imgs = allImages.map((_, i) => allImages[(i + rotation) % allImages.length
         </div>
       </motion.div>
       <div className="bg-[#10502F] h-full w-full p-8 lg:p-20">
-        <h1 className="text-[#F5C518] flex items-center justify-center w-full text-[36px] lg:text-[55px] font-bold">Our Mission</h1>
+        <h1 className="text-[#F5C518] flex items-center justify-center w-full text-[30px] lg:text-[55px] font-bold">Our Mission</h1>
         <div className="flex items-center justify-center h-full w-full">
             <img loading="lazy" className="w-full lg:w-[70%] object-contain" src={mission} alt="" />
         </div>
       </div>
       <div className="px-6 md:px-12 lg:px-20 py-10 lg:py-15 bg-gray-200 h-full">
-        <motion.h1 {...inView()} className="font-semibold text-3xl">Key Objectives</motion.h1>
-        <p className="w-full lg:max-w-[50%] text-gray-700 text-base lg:text-lg py-10 leading-relaxed">Across two intensive days, practitioners and thought leaders surfaced the defining challenges and opportunities shaping SEL across African education systems.</p>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-15 w-full">
+        <motion.h1 {...inView()} className="font-semibold text-2xl md:text-3xl">Key Objectives</motion.h1>
+        <p className="w-full lg:max-w-[50%] text-gray-700 text-sm lg:text-lg py-10 leading-relaxed">Across two intensive days, practitioners and thought leaders surfaced the defining challenges and opportunities shaping SEL across African education systems.</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-15 w-full">
             {[
             { num: "01", title: "Showcase African-grown SEL strategies", desc: "We spotlight and curate strategies that support learner development from early years through adulthood." },
             { num: "02", title: "Bridge the gap between schools and homes", desc: "By empowering parents and caregivers as co-educators in social and emotional growth." },
@@ -136,10 +135,10 @@ const imgs = allImages.map((_, i) => allImages[(i + rotation) % allImages.length
             { num: "05", title: "Create cross-sector partnerships", desc: "The goal of these partnerships is to bring education, social services, and economic sectors into one shared vision of child and youth development." },
             { num: "06", title: "Launch an Impact Lab", desc: "The final goal of this initiative is to launch an impact lab on social and emotional learning with a goal to document evidence and scale practice" },
             ].map((item, i) => (
-            <motion.div key={item.num} {...inView(i * 0.08)} className="bg-white border border-gray-200 rounded-xl py-7 px-4 border-l-12 border-l-[#1C5035]">
-                <p className="text-3xl font-bold text-gray-900 mb-6">{item.num}</p>
-                <p className="text-md font-bold text-gray-900 mb-6">{item.title}</p>
-                <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
+            <motion.div key={item.num} {...inView(i * 0.08)} className="bg-white border border-gray-200 rounded-xl py-4 md:py-7 px-4 border-l-12 border-l-[#1C5035]">
+                <p className="text-3xl font-bold text-gray-900 mb-4 md:mb-6">{item.num}</p>
+                <p className="text-md font-bold text-gray-900 mb-4 md:mb-6">{item.title}</p>
+                <p className="text-xs md:text-sm text-gray-500 leading-relaxed">{item.desc}</p>
             </motion.div>
             ))}
         </div>
@@ -173,7 +172,7 @@ const imgs = allImages.map((_, i) => allImages[(i + rotation) % allImages.length
         {[
           [rhoda, "Rhoda Odigboh", "Co-Founder/President"],
           [liyel, "Senator Liyel Imoke", "Former Governor, Cross River State & Founder/Chairman, The Bridge Leadership Foundation"],
-          [andreas, "Andreas Schleicher", "Former Governor, Cross River State & Founder/Chairman, The Bridge Leadership Foundation"],
+          [andreas, "Andreas Schleicher", "Director for Education and Skills at the Organisation for Economic Co-operation and Development(OECD)"],
           [aaliyah, "Dr. Aaliyah A. Samuel", "President & CEO, Collaborative for Academic, Social, and Emotional LearningCASEL"],
           [olanrewaju, "Olarewaju Oniyitan", "Founder, SEED Care & Support Foundation."],
           [folashade, "Mrs Folashade Adefisayo", "Former Commissioner of Education, Lagos State & CEO Leading Learning Ltd"],
@@ -205,8 +204,8 @@ const imgs = allImages.map((_, i) => allImages[(i + rotation) % allImages.length
         <motion.div {...inView()} className="grid grid-cols-2 md:grid-cols-4 items-start w-full gap-5 py-10">
             <div className="flex flex-col text-center items-center justify-center">
                 <img loading="lazy" src={oguntade} alt="" className="w-32 h-32 lg:w-50 lg:h-50 rounded-full object-cover mb-5" />
-                <p className="font-semibold">Oguntade Ijeoma</p>
-                <p className="max-w-[80%] text-gray-500">Programs Lead</p>
+                <p className="font-semibold text-sm lg:text-base">Oguntade Ijeoma</p>
+                <p className="max-w-[80%] text-gray-500 text-xs lg:text-sm">Programs Lead</p>
             </div>
         </motion.div>
         </div>
@@ -226,7 +225,7 @@ const imgs = allImages.map((_, i) => allImages[(i + rotation) % allImages.length
               <motion.img
                 key={imgs[0]}
                 layout
-                {...inView(0.1)}
+                initial={{opacity:0,scale:0.8}} animate={{opacity:1,scale:1}} transition={{duration:1.5,delay:0.2,ease:[0.16,1,0.3,1]}}
                 className="h-full w-full object-cover rounded-2xl"
                 src={imgs[0]}
                 alt=""
@@ -236,7 +235,7 @@ const imgs = allImages.map((_, i) => allImages[(i + rotation) % allImages.length
               <motion.img
                 key={imgs[1]}
                 layout
-                {...inView(0.3)}
+                initial={{opacity:0,scale:0.8}} animate={{opacity:1,scale:1}} transition={{duration:1.5,delay:0.2,ease:[0.16,1,0.3,1]}}
                 className="h-48 md:h-full w-1/2 md:w-full object-cover rounded-2xl"
                 src={imgs[1]}
                 alt=""
@@ -244,7 +243,7 @@ const imgs = allImages.map((_, i) => allImages[(i + rotation) % allImages.length
               <motion.img
                 key={imgs[2]}
                 layout
-                {...inView(0.5)}
+                initial={{opacity:0,scale:0.8}} animate={{opacity:1,scale:1}} transition={{duration:1.5,delay:0.2,ease:[0.16,1,0.3,1]}}
                 className="h-48 md:h-full w-1/2 md:w-full object-cover rounded-2xl"
                 src={imgs[2]}
                 alt=""
@@ -254,7 +253,7 @@ const imgs = allImages.map((_, i) => allImages[(i + rotation) % allImages.length
               <motion.img
                 key={imgs[3]}
                 layout
-                {...inView(0.7)}
+                initial={{opacity:0,scale:0.8}} animate={{opacity:1,scale:1}} transition={{duration:1.5,delay:0.2,ease:[0.16,1,0.3,1]}}
                 className="h-48 md:h-full w-1/2 md:w-full object-cover rounded-2xl"
                 src={imgs[3]}
                 alt=""
@@ -262,7 +261,7 @@ const imgs = allImages.map((_, i) => allImages[(i + rotation) % allImages.length
               <motion.img
                 key={imgs[4]}
                 layout
-                {...inView(0.9)}
+                initial={{opacity:0,scale:0.8}} animate={{opacity:1,scale:1}} transition={{duration:1.5,delay:0.2,ease:[0.16,1,0.3,1]}}
                 className="h-48 md:h-full w-1/2 md:w-full object-cover rounded-2xl"
                 src={imgs[4]}
                 alt=""
@@ -322,7 +321,7 @@ const imgs = allImages.map((_, i) => allImages[(i + rotation) % allImages.length
             </div>
         </div>
         </div>
-        <div className="px-6 md:px-12 lg:px-20">
+        <div className="px-4 md:px-12 lg:px-20">
             <motion.div className="flex flex-col lg:flex-row justify-between min-h-[50vh] lg:min-h-[80vh] w-full rounded-[2rem] bg-[#1C5035] my-20 overflow-hidden drop-shadow-2xl shadow-black/30"
             initial={{ opacity: 0, x: 100 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -337,11 +336,11 @@ const imgs = allImages.map((_, i) => allImages[(i + rotation) % allImages.length
                 <h1 className="text-base lg:text-lg text-white tracking-wide">
                     Join our growing network of educators and practitioners shaping the future of SEL in African education.
                 </h1>
-                <div className="flex gap-6 lg:gap-15 pt-8 lg:pt-20">
-                    <button onClick={() => navigate('/resources')} className="bg-white text-black text-md font-medium px-6 lg:px-8 py-3 lg:py-4 rounded-lg shadow-xl shadow-black/10">
+                <div className="flex gap-3 lg:gap-15 pt-8 lg:pt-20">
+                    <button onClick={() => navigate('/resources')} className="bg-white text-black text-sm md:text-md font-medium px-2 lg:px-8 py-3 lg:py-4 rounded-lg shadow-xl shadow-black/10">
                     Our Products
                     </button>
-                    <button onClick={() => navigate('/get-involved')} className="text-white border border-white text-md font-medium px-6 lg:px-8 py-3 lg:py-4 rounded-lg shadow-xl shadow-black/10">
+                    <button onClick={() => navigate('/get-involved')} className="text-white border border-white text-sm md:text-md font-medium px-2 lg:px-8 py-3 lg:py-4 rounded-lg shadow-xl shadow-black/10">
                     Partner with Us
                     </button>
                 </div>
@@ -359,4 +358,4 @@ const imgs = allImages.map((_, i) => allImages[(i + rotation) % allImages.length
   )
 }
 
-export default PASCEL
+export default PACSEL

@@ -40,14 +40,14 @@ const Payment = () => {
                 </div>
                 <p className="text-[14px] lg:text-[16px] pt-6 text-gray-700 uppercase tracking-wide block">AVAILABLE PAYMENT METHODS</p>
                 <div className="flex flex-row items-center justify-center gap-4">
-                    <div className="border border-gray-200 h-28 lg:h-36 rounded-2xl p-6 lg:p-10 flex justify-center items-center">
+                    <div className="border border-gray-200 h-28 lg:h-36 rounded-2xl p-4 lg:p-10 flex justify-center items-center">
                         <img loading="lazy" className="size-40 lg:size-60 object-contain" src={paystack} alt="" />
                     </div>
-                    <div className="border border-gray-200 h-28 lg:h-36 rounded-2xl p-5 lg:p-8 flex justify-center items-center">
+                    <div className="border border-gray-200 h-28 lg:h-36 rounded-2xl p-1 lg:p-8 flex justify-center items-center">
                         <img loading="lazy" className="size-40 lg:size-60 object-contain" src={gofundme} alt="" />
                     </div>
                 </div>
-                <button onClick={() => navigate(-1)} className="mt-4 text-[16px] flex items-start justify-start text-[#1a5c2e] underline">
+                <button onClick={() => navigate(-1)} className="mt-4 text-[16px] flex items-start justify-start text-[#1a5c2e] hover:underline">
                     ← Go back
                 </button>
                 <button className="w-full py-4 lg:py-6 rounded-lg text-white text-[16px] lg:text-[18px] font-semibold flex items-center justify-center gap-3 mt-4" style={{ backgroundColor: '#1C5035' }}>
