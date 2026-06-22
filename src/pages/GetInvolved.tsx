@@ -84,11 +84,11 @@ const GetInvolved = () => {
                 </motion.p>
                 </div>
               <div className="flex flex-wrap gap-2 lg:gap-4">
-                <button className="border border-gray-500 text-gray-500 text-sm px-3 py-1.5 rounded-full hover:border-gray-700 hover:text-gray-700 transition-colors">I'm an Educator</button>
-                <button className="border border-gray-500 text-gray-500 text-sm px-3 py-1.5 rounded-full hover:border-gray-700 hover:text-gray-700 transition-colors">I'm a Partner</button>
-                <button className="border border-gray-500 text-gray-500 text-sm px-3 py-1.5 rounded-full hover:border-gray-700 hover:text-gray-700 transition-colors">I'm a Reasearcher</button>
-                <button className="border border-gray-500 text-gray-500 text-sm px-3 py-1.5 rounded-full hover:border-gray-700 hover:text-gray-700 transition-colors">I'm a Donor</button>
-                <button className="border border-gray-500 text-gray-500 text-sm px-3 py-1.5 rounded-full hover:border-gray-700 hover:text-gray-700 transition-colors">I'm a Parent</button>
+                <button className="border border-gray-500 text-gray-500 text-sm px-3 py-1.5 rounded-full hover:border-gray-700 transition-colors">Educator</button>
+                <button className="border border-gray-500 text-gray-500 text-sm px-3 py-1.5 rounded-full hover:border-gray-700 transition-colors">Partner</button>
+                <button className="border border-gray-500 text-gray-500 text-sm px-3 py-1.5 rounded-full hover:border-gray-700 transition-colors">Researcher</button>
+                <button className="border border-gray-500 text-gray-500 text-sm px-3 py-1.5 rounded-full hover:border-gray-700 transition-colors">Donor</button>
+                <button className="border border-gray-500 text-gray-500 text-sm px-3 py-1.5 rounded-full hover:border-gray-700 transition-colors">Parent</button>
               </div>
             </div>
           <motion.div initial={{opacity:0,scale:0.8}} animate={{opacity:1,scale:1}} transition={{duration:0.9,delay:0.2,ease:[0.16,1,0.3,1] as any}} className="">

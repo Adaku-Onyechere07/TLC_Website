@@ -134,7 +134,11 @@ const Navbar = () => {
           <li className="hover:underline cursor-pointer" onClick={() => navigate('/about')}>About</li>
           <li className="hover:underline cursor-pointer" onClick={() => navigate('/resources')}>Resources</li>
           <li className="hover:underline cursor-pointer" onClick={() => navigate('/get-involved')}>Get Involved</li>
-          <li className="hover:underline cursor-pointer" onClick={() => navigate('/foundation')}>Foundation</li>
+          <li className="hover:underline cursor-pointer" onClick={() => navigate('/foundation')}>Foundation <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-3 h-3 sm:w-4 sm:h-4 inline-block ml-1 mb-1" aria-hidden="true">
+            <polyline points="15 3 21 3 21 9" />
+            <line x1="10" y1="14" x2="21" y2="3" />
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg>
+          </li>
         </ul>
         <div className="hidden lg:flex items-center gap-3">
           <button

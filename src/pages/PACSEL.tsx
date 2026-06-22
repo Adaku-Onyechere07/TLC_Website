@@ -39,6 +39,175 @@ const inView = (delay = 0) => ({
   transition: { duration: 0.65, delay, ease: [0.16, 1, 0.3, 1] as any },
 })
 
+interface SlotDigitProps {
+  targetDigit: number
+  duration: number
+  delay: number
+  spinCycles?: number
+}
+
+const SlotDigit: React.FC<SlotDigitProps> = ({ targetDigit, duration, delay, spinCycles = 3 }) => {
+  const [offset, setOffset] = useState(0)
+  const [isSpinning, setIsSpinning] = useState(false)
+  const rafRef = useRef<number | null>(null)
+  const startTimeRef = useRef<number | null>(null)
+
+  const totalDigits = 10 * spinCycles + targetDigit + 1
+  const targetOffset = -(totalDigits - 1)
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsSpinning(true)
+      startTimeRef.current = null
+
+      const animate = (timestamp: number) => {
+        if (startTimeRef.current === null) startTimeRef.current = timestamp
+        const elapsed = timestamp - startTimeRef.current
+        const progress = Math.min(elapsed / duration, 1)
+        const eased = 1 - Math.pow(1 - progress, 3)
+        setOffset(eased * targetOffset)
+        if (progress < 1) {
+          rafRef.current = requestAnimationFrame(animate)
+          isSpinning;
+        } else {
+          setOffset(targetOffset)
+          setIsSpinning(false)
+        }
+      }
+
+      rafRef.current = requestAnimationFrame(animate)
+    }, delay)
+
+    return () => {
+      clearTimeout(timeout)
+      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current)
+    }
+  }, [targetDigit, duration, delay, targetOffset])
+
+  const digits: number[] = []
+  for (let cycle = 0; cycle < spinCycles; cycle++) {
+    for (let d = 0; d <= 9; d++) digits.push(d)
+  }
+  for (let d = 0; d <= targetDigit; d++) digits.push(d)
+
+  return (
+    <div className="overflow-hidden" style={{ height: "1em", lineHeight: "1em", display: "inline-block" }}>
+      <div style={{ transform: `translateY(${offset}em)`, willChange: "transform", filter: "blur(0px)", opacity: 1, transition: "none" }}>
+        {digits.map((d, i) => (
+          <div key={i} style={{ height: "1em", lineHeight: "1em" }}>{d}</div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+interface PacselSlotCounterProps {
+  targetValue: number
+  prefix?: string
+  suffix?: string
+  label: string
+  duration?: number
+  delay?: number
+  borderRight?: boolean
+  paddingClass?: string
+}
+
+const PacselSlotCounter: React.FC<PacselSlotCounterProps> = ({
+  targetValue, prefix = "", suffix = "", label, duration = 1800, delay = 0, borderRight = false, paddingClass = "px-4",
+}) => {
+  const digits = String(targetValue).split("").map(Number)
+  return (
+    <div className={`flex flex-col text-justify items-center justify-center py-4 ${paddingClass} ${borderRight ? "border-r border-r-[#10502F]" : ""}`}>
+      <h1 className="font-playfair-display text-[#10502F] text-[32px] lg:text-[40px] font-bold flex items-center">
+        {prefix && <span>{prefix}</span>}
+        {digits.map((digit, i) => (
+          <SlotDigit key={i} targetDigit={digit} duration={duration} delay={delay + i * 80} spinCycles={3} />
+        ))}
+        {suffix && <span>{suffix}</span>}
+      </h1>
+      <p className="text-[#10502F] text-[12px] lg:text-[14px] uppercase font-medium tracking-wider text-center">{label}</p>
+    </div>
+  )
+}
+
+interface PacselStatItem {
+  value: number
+  prefix?: string
+  suffix?: string
+  label: string
+  duration: number
+  delay: number
+  borderRight?: boolean
+  paddingClass?: string
+}
+
+const pacselStatsData: PacselStatItem[] = [
+  { value: 5000, suffix: "+", label: "teachers trained",   duration: 1600, delay: 0,   borderRight: true, paddingClass: "px-4 lg:pr-8" },
+  { value: 200,  prefix: "", suffix: "k+", label: "students impacted", duration: 1800, delay: 200, borderRight: true, paddingClass: "px-4 lg:px-8" },
+  { value: 15,   suffix: "+", label: "countries reached",  duration: 1400, delay: 400, borderRight: true, paddingClass: "px-4 lg:px-8" },
+  { value: 40,   suffix: "+", label: "partner schools",    duration: 1400, delay: 600, borderRight: false, paddingClass: "px-4 lg:px-12" },
+]
+
+const PacselStatsSection: React.FC = () => {
+  const [hasAnimated, setHasAnimated] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
+
+  const handleMouseEnter = () => {
+    if (!hasAnimated) setHasAnimated(true)
+  }
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const isTouch = window.matchMedia("(max-width: 1024px)").matches
+    if (!isTouch) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated) {
+          setHasAnimated(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.3 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [hasAnimated])
+
+  return (
+    <motion.div
+      ref={ref}
+      onMouseEnter={handleMouseEnter}
+      className="bg-[#F5C518] py-10 lg:py-15 grid grid-cols-2 lg:grid-cols-4"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+    >
+      {pacselStatsData.map((s, i) =>
+        hasAnimated ? (
+          <PacselSlotCounter
+            key={i}
+            targetValue={s.value}
+            prefix={s.prefix}
+            suffix={s.suffix}
+            label={s.label}
+            duration={s.duration}
+            delay={s.delay}
+            borderRight={s.borderRight}
+            paddingClass={s.paddingClass}
+          />
+        ) : (
+          <div key={i} className={`flex flex-col text-justify items-center justify-center py-6 ${s.paddingClass} ${s.borderRight ? "border-r border-r-[#10502F]" : ""}`}>
+            <h1 className="font-playfair-display text-[#10502F] text-[32px] lg:text-[40px] font-bold opacity-0 my-4">0</h1>
+            <p className="text-[#10502F] text-[12px] lg:text-[14px] uppercase font-medium tracking-wider text-center">{s.label}</p>
+          </div>
+        )
+      )}
+    </motion.div>
+  )
+}
+
 const PACSEL = () => {
   const navigate = useNavigate();
   const highlightReelRef = useRef<HTMLDivElement>(null);
@@ -100,24 +269,7 @@ const imgs = allImages.map((_, i) => allImages[(i + rotation) % allImages.length
             </motion.div>
           </div>
       </div>
-      <motion.div className="bg-[#F5C518] py-10 lg:py-15 grid grid-cols-2 lg:grid-cols-4" initial={{opacity:0}} whileInView={{opacity:1}} viewport={{once:true}} transition={{duration:0.6}}>
-        <div className="flex flex-col text-justify items-center justify-center py-4 px-4 lg:pr-8 border-r border-r-[#10502F]">
-            <h1 className="font-playfair-display text-[#10502F] text-[32px] lg:text-[40px] font-bold">0000</h1>
-            <p className="text-[#10502F] text-[12px] lg:text-[14px] uppercase font-medium tracking-wider text-center">teachers trained</p>
-        </div>
-        <div className="flex flex-col items-center justify-center py-4 px-4 lg:px-8 lg:border-r border-r-[#10502F]">
-            <h1 className="font-playfair-display text-[#10502F] text-[32px] lg:text-[40px] font-bold">0000</h1>
-            <p className="text-[#10502F] text-[12px] lg:text-[14px] uppercase font-medium tracking-wider text-center">students impacted</p>
-        </div>
-        <div className="flex flex-col items-center justify-center py-4 px-4 lg:px-8 border-r border-r-[#10502F]">
-            <h1 className="font-playfair-display text-[#10502F] text-[32px] lg:text-[40px] font-bold">00</h1>
-            <p className="text-[#10502F] text-[12px] lg:text-[14px] uppercase font-medium tracking-wider text-center">countries reached</p>
-        </div>
-        <div className="flex flex-col items-center justify-center py-4 px-4 lg:px-12">
-            <h1 className="font-playfair-display text-[#10502F] text-[32px] lg:text-[40px] font-bold">00</h1>
-            <p className="text-[#10502F] text-[12px] lg:text-[14px] uppercase font-medium tracking-wider text-center">partner schools</p>
-        </div>
-      </motion.div>
+      <PacselStatsSection />
       <div className="bg-[#10502F] h-full w-full p-8 lg:p-20">
         <h1 className="text-[#F5C518] flex items-center justify-center w-full text-[30px] lg:text-[55px] font-bold">Our Mission</h1>
         <div className="flex items-center justify-center h-full w-full">

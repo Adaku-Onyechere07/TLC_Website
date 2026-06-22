@@ -120,7 +120,7 @@ const Footer = () => {
 
       <div className="border-t border-gray-400 mt-10">
         <p className="text-center text-xs text-gray-700 pt-10 tracking-wider">
-          © 2014 The Learning Craft. All rights reserved. Empowering Educators worldwide.
+          © 2026 The Learning Craft. All rights reserved. Empowering Educators worldwide.
         </p>
       </div>
     </div>

@@ -2,7 +2,6 @@ import { FaRocket } from "react-icons/fa6"
 import Layout from "../components/Layout"
 import { useNavigate } from "react-router-dom"
 import { motion } from "framer-motion"
-import earth from "../assets/images/earth (1).png"
 import pfp from "../assets/images/4ef0e74153b0753ed786bc8cb8281bf2c91a1c84 (1).png"
 import ndu from "../assets/images/a4a950419bc77fefce40a3375788655446975896 (1).png"
 import image from "../assets/images/a95e62b50f8c087b327489d6f5dcfcd6a3ba6020.png"
@@ -94,28 +93,10 @@ const Programs = () => {
             Programs
           </motion.div>
           <div className="flex flex-col gap-10 lg:gap-15 items-center justify-center">
-            <motion.div {...inView(0)} className="border border-gray-200 rounded-3xl flex flex-col lg:flex-row w-full">
-                <div className="flex flex-col gap-6 p-8 lg:p-20 w-full lg:w-1/2 lg:border-r border-gray-200">
-                    <h1 className="text-xl font-semibold">Climate-Responsive Digital Literacy</h1>
-                    <p className="text-gray-400 leading-relaxed text-xs md:text-md xl:text-lg tracking-wide">Today's students are more connected than ever — and that connection comes with both extraordinary opportunity and real risk. The TLC Digital Citizenship Curriculum equips students across K–12 with the critical thinking, safety skills, and ethical grounding they need to thrive in a digital world. Rooted in climate-responsive digital literacy, the curriculum goes beyond screen time — it shapes how young people engage, create, and contribute online, responsibly.</p>
-                </div>
-                <div className="w-full lg:w-1/2">
-                    <img loading="lazy" className="w-full aspect-video lg:aspect-auto lg:w-lg lg:h-lg object-cover rounded-b-3xl lg:rounded-b-none lg:rounded-r-3xl border-t lg:border-t-0 border-gray-200" src={earth} alt="" />
-                </div>
-            </motion.div>
-            <motion.div {...inView(0.05)} className="border border-gray-200 rounded-3xl flex flex-col lg:flex-row w-full">
-                <div className="flex flex-col gap-6 p-8 lg:p-20 w-full lg:w-1/2">
-                    <h1 className="text-xl font-semibold">Pads for Progress</h1>
-                    <p className="text-gray-400 leading-relaxed text-xs md:text-md xl:text-lg tracking-wide">We support girls in underserved and under-resourced communities across Africa, tackling one of the most significant yet under-stated barriers to their education: Period Poverty. We work with communities to provide access to sanitary pads, and hygiene resources, so young girls can attend school with dignity and confidence. We aim to empower girls to reach their full potential and unlock a brighter future for themselves and their communities by addressing this hidden issue.</p>
-                </div>
-                <div className="w-full lg:w-1/2">
-                    <img loading="lazy" className="w-full aspect-video lg:aspect-auto lg:h-full object-cover rounded-b-3xl lg:rounded-b-none lg:rounded-r-3xl border-t lg:border-t-0 lg:border-l border-gray-200" src={pfp} alt="" />
-                </div>
-            </motion.div>
-            <motion.div {...inView(0.1)} className="border border-gray-200 rounded-3xl flex flex-col lg:flex-row w-full">
+              <motion.div {...inView(0.1)} className="border border-gray-200 rounded-3xl flex flex-col lg:flex-row w-full">
                 <div className="flex flex-col p-8 lg:p-20 w-full lg:w-1/2">
                     <h1 className="text-xl font-semibold mb-6">Social & Emotional Learning Toolkit</h1>
-                    <p className="text-gray-400 leading-relaxed text-xs md:text-md xl:text-lg tracking-wide">Our Ndu(R) Social and Emotional Learning (SEL) toolkit is a collection of proprietary resources, strategies, and activities designed to support the development of social and emotional skills in students from K to 9. Ndu(R) SEL It typically contains:</p>
+                    <p className="text-gray-400 leading-relaxed text-xs md:text-md xl:text-lg tracking-wide">Our Ndu® Social and Emotional Learning (SEL) toolkit is a collection of proprietary resources, strategies, and activities designed to support the development of social and emotional skills in students from K to 9. Ndu® SEL It typically contains:</p>
                     <ul className="text-xs md:text-md xl:text-lg text-gray-400">
                         <li>1. Lesson plans and activities</li>
                         <li>2. Assessment tools (and possible surveys)</li>
@@ -128,6 +109,18 @@ const Programs = () => {
                 </div>
                 <div className="w-full lg:w-1/2">
                     <img loading="lazy" className="w-full aspect-video lg:aspect-auto lg:h-full object-cover rounded-b-3xl lg:rounded-b-none lg:rounded-r-3xl border-t lg:border-t-0 lg:border-l border-gray-200" src={ndu} alt="" />
+                </div>
+            </motion.div>
+            <motion.div {...inView(0.05)} className="border border-gray-200 rounded-3xl flex flex-col lg:flex-row w-full">
+                <div className="flex flex-col gap-6 p-8 lg:p-20 w-full lg:w-1/2">
+                    <h1 className="text-xl font-semibold">Pads for Progress</h1>
+                    <p className="text-gray-400 leading-relaxed text-xs md:text-md xl:text-lg tracking-wide">We support girls in underserved and under-resourced communities across Africa, tackling one of the most significant yet under-stated barriers to their education: Period Poverty. We work with communities to provide access to sanitary pads, and hygiene resources, so young girls can attend school with dignity and confidence. We aim to empower girls to reach their full potential and unlock a brighter future for themselves and their communities by addressing this hidden issue.</p>
+                    <a href="https://www.linkedin.com/company/empowering-girls-through-advocacy/" target="_blank" rel="noopener noreferrer" className="text-black text-xs md:text-md xl:text-lg font-medium hover:underline">
+                        Support Us
+                    </a>
+                </div>
+                <div className="w-full lg:w-1/2">
+                    <img loading="lazy" className="w-full aspect-video lg:aspect-auto lg:h-full object-cover rounded-b-3xl lg:rounded-b-none lg:rounded-r-3xl border-t lg:border-t-0 lg:border-l border-gray-200" src={pfp} alt="" />
                 </div>
             </motion.div>
           </div>

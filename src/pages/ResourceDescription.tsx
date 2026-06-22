@@ -107,10 +107,6 @@ const RESOURCES: ResourceDetail[] = [
           <li>Manage emotions and relationships</li>
           <li>Achieve academic and personal goals</li>
         </ul>
-        <p className="text-sm text-black">
-          Get Your Workbook Now 🛒 Shop now → visit{" "}
-          <span className="text-[#1a5c2e] font-medium">Ndu Resources Store</span>
-        </p>
       </>
     ),
     bullets: [{ text: "Chato Bookbazaar" }],
@@ -431,7 +427,7 @@ export default function ResourceDescription() {
   return (
     <>
     <Layout>
-    <div className="w-full mx-auto px-6 md:px-12 lg:px-20 py-10 lg:py-15">
+    <div className="w-full mx-auto px-6 md:px-12 lg:px-20 py-10 lg:py-15 mb-10 md:mb-20">
       <h1 className="text-xl lg:text-2xl font-bold text-gray-900 mb-8">{resource.title}</h1>
 
       <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 items-start">

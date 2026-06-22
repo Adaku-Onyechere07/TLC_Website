@@ -248,7 +248,7 @@ const HomePage = () => {
                 ref={scrollRef}
                 className="overflow-x-auto w-full [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
               >
-                <div className="flex flex-row justify-between items-center w-max gap-6 lg:gap-20">
+                <div className="flex flex-row justify-between items-center w-max gap-6 lg:gap-20 mb-10">
                   <div onClick={() => navigate("/resources/exceptional-teachers-academy")} className="flex items-center overflow-hidden h-40 md:h-35 w-[320px] md:w-[500px] lg:w-full lg:min-w-[700px] rounded-lg border border-gray-200 bg-white drop-shadow-lg shadow-black/70 cursor-pointer hover:shadow-lg transition-shadow">
                     <div
                       className="flex-shrink-0 w-24 lg:w-40 self-stretch flex items-center justify-center"
@@ -414,7 +414,7 @@ const HomePage = () => {
                 </span>
 
                 <h1 className="text-[24px] md:text-[40px] font-black tracking-wide">
-                  Join the Movement Building Africa's Tourism Future
+                  Join the Movement Building Africa's Education Future
                 </h1>
                 <div className="flex gap-5 lg:gap-15">
                   <button onClick={() => navigate('/resources')} className="bg-white text-black text-xs md:text-md font-medium px-2 md:px-8 py-2 md:py-4 rounded-lg shadow-xl shadow-black/10">

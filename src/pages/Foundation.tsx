@@ -12,6 +12,7 @@ import splash4 from "../assets/images/pink.png"
 import splash5 from "../assets/images/blue.png"
 import image from "../assets/images/a95e62b50f8c087b327489d6f5dcfcd6a3ba6020.png"
 import highlights from "../assets/images/Frame 497.png"
+import { useEffect, useRef, useState } from "react"
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 32 },
   animate: { opacity: 1, y: 0 },
@@ -38,6 +39,68 @@ const cards = [
 
 const Foundation = () => {
   const navigate = useNavigate()
+    const scrollRef = useRef<HTMLDivElement>(null)
+    const animationRef = useRef<number | null>(null)
+    const directionRef = useRef<"forward" | "backward">("forward")
+    const isHoveredRef = useRef(false)
+    const [showButtons, setShowButtons] = useState(false)
+  
+    const scrollAmount = 750
+    const intervalMs = 2000
+  
+    useEffect(() => {
+      const container = scrollRef.current
+      if (!container) return
+  
+      const autoScroll = () => {
+        if (isHoveredRef.current) return
+        if (window.innerWidth < 1024) return
+  
+        const { scrollLeft, scrollWidth, clientWidth } = container
+        const atEnd = scrollLeft + clientWidth >= scrollWidth - 10
+        const atStart = scrollLeft <= 10
+  
+        if (directionRef.current === "forward" && atEnd) {
+          directionRef.current = "backward"
+        } else if (directionRef.current === "backward" && atStart) {
+          directionRef.current = "forward"
+        }
+  
+        const target =
+          directionRef.current === "forward"
+            ? scrollLeft + scrollAmount
+            : scrollLeft - scrollAmount
+  
+        container.scrollTo({ left: target, behavior: "smooth" })
+      }
+  
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting && window.innerWidth >= 1024) {
+            animationRef.current = window.setInterval(autoScroll, intervalMs)
+          } else {
+            if (animationRef.current) clearInterval(animationRef.current)
+          }
+        },
+        { threshold: 0.3 }
+      )
+  
+      observer.observe(container)
+  
+      return () => {
+        observer.disconnect()
+        if (animationRef.current) clearInterval(animationRef.current)
+      }
+    }, [])
+  
+    const handleScrollLeft = () => {
+      scrollRef.current?.scrollBy({ left: -scrollAmount, behavior: "smooth" })
+    }
+  
+    const handleScrollRight = () => {
+      scrollRef.current?.scrollBy({ left: scrollAmount, behavior: "smooth" })
+    }
+  
   return (
     <>
     <Layout>
@@ -85,7 +148,6 @@ const Foundation = () => {
                     <div className="absolute bottom-0 right-0 w-22 h-22 bg-black/10" style={{ borderRadius: '14px 0 20px 0' }} />
                     <p className="text-gray-900 font-medium text-xl lg:text-2xl mb-6">{card.title}</p>
                     <p className="text-sm text-gray-500 leading-loose mb-8 flex-1">{card.desc}</p>
-                    <p onClick={() => navigate('/foundation/programs')} className="text-[#1a5c2e] font-semibold uppercase text-md md:text-lg leading-loose cursor-pointer hover:underline">LEARN MORE</p>
                 </div>
                 <button onClick={() => navigate('/foundation/programs')} className="absolute bottom-0 right-0 bg-[#1a5c2e] rounded-tl-2xl rounded-br-2xl w-20 h-20 flex items-center justify-center hover:bg-[#154a24] transition-colors shadow-lg">
                     <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -114,7 +176,7 @@ const Foundation = () => {
              <p className="text-[17px] py-3 font-semibold text-gray-900">{card.title}</p>
               <p className="text-xs md:text-[15px] tracking-wide text-gray-600 leading-relaxed">{card.body}</p>
               {card.list && (
-                <ol className="text-[13px] text-gray-500 leading-loose list-decimal list-inside">
+                <ol className="text-xs md:text-[15px] tracking-wide text-gray-600 leading-relaxed list-decimal list-inside">
                   {card.list.map((item) => <li key={item}>{item}</li>)}
                 </ol>
               )}
@@ -149,19 +211,81 @@ const Foundation = () => {
 
         <div className="px-6 md:px-16 lg:px-30">
           <motion.div {...inView()} className="font-thin text-[28px] lg:text-[36px] max-w-[750px] py-10">Initiatives</motion.div>
-          <motion.div {...inView(0.1)} className="bg-[#89853C] rounded-4xl min-h-[400px] lg:h-[80vh] w-full p-4 md:p-6 lg:p-10">
-           <div className="bg-gray-200 h-full rounded-3xl flex flex-col lg:flex-row">
-                <div className="flex flex-col justify-center gap-4 w-full lg:w-[40%] px-6 lg:px-10 py-8 lg:py-10">
-                    <h1 className="text-lg md:text-xl font-bold">The TLCF SEL Prize</h1>
-                    <div className="text-gray-700 leading-relaxed text-xs md:text-sm tracking-wide leading-loose">The TLCF SEL Prize challenges students and teachers to design community-based projects that address an annual SEL theme, with winners celebrated across our platforms.
-                    <p className="text-gray-700 leading-relaxed text-xs md:text-md tracking-wide py-2 leading-loose">Our inaugural theme is The Kindness Challenge — inviting schools to create meaningful projects rooted in empathy, compassion, and SEL principles. Because kindness isn't a one-time act; it's a way of life.</p>
-                    <p className="text-black font-semibold leading-relaxed text-md tracking-wide leading-loose">Follow our social media platforms for participation details.</p></div>
+                      <div
+              className="relative"
+              onMouseEnter={() => {
+                isHoveredRef.current = true
+                setShowButtons(true)
+              }}
+              onMouseLeave={() => {
+                isHoveredRef.current = false
+                setShowButtons(false)
+              }}
+            >
+              {showButtons && (
+                <>
+                <div className="absolute top-10 left-3 flex gap-2 z-10">
+                  <button
+                    onClick={handleScrollLeft}
+                    className="w-12 h-12 rounded-full bg-white border border-gray-200 shadow flex items-center justify-center hover:bg-gray-50"
+                  >
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                      <path d="M8 2L4 6l4 4" stroke="#1a7a4a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </button>
                 </div>
-                <div className="w-full lg:w-[60%]">
-                    <img loading="lazy" className="w-full h-full object-cover rounded-b-3xl lg:rounded-b-none lg:rounded-r-xl" src={sel} alt="" />
+                <div className="absolute top-10 right-3 flex gap-2 z-10">
+                  <button
+                    onClick={handleScrollRight}
+                    className="w-12 h-12 rounded-full bg-white border border-gray-200 shadow flex items-center justify-center hover:bg-gray-50"
+                  >
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                      <path d="M4 2l4 4-4 4" stroke="#1a7a4a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </button>
                 </div>
-            </div>
-          </motion.div>
+                </>
+              )}
+              <div
+                ref={scrollRef}
+                className="overflow-x-auto w-full [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+              >
+              <div className="flex flex-row justify-between items-center w-max gap-6 lg:gap-20 mb-10">
+                  <div className="bg-[#1C5035] rounded-4xl min-h-[400px] lg:h-[80vh] w-full p-4 md:p-6 lg:p-10">
+                    <div className="bg-gray-200 h-full rounded-3xl flex flex-col lg:flex-row">
+                        <div className="flex flex-col justify-center gap-4 w-full lg:w-[40%] px-6 lg:px-10 py-8 lg:py-10">
+                            <h1 className="text-lg md:text-xl font-bold">The TLCF SEL Prize</h1>
+                            <div className="text-gray-700 leading-relaxed text-xs md:text-sm tracking-wide leading-loose">The TLCF SEL Prize challenges students and teachers to design community-based projects that address an annual SEL theme, with winners celebrated across our platforms.
+                            <p className="text-gray-700 leading-relaxed text-xs md:text-sm tracking-wide leading-loose py-2">Our inaugural theme is The Kindness Challenge — inviting schools to create meaningful projects rooted in empathy, compassion, and SEL principles. Because kindness isn't a one-time act; it's a way of life.</p>
+                            <p className="text-black font-semibold leading-relaxed text-xs md:text-sm tracking-wide leading-loose">Follow our social media platforms for participation details.</p></div>
+                        </div>
+                        <div className="w-full lg:w-[60%]">
+                            <img loading="lazy" className="w-full h-full object-cover rounded-b-3xl lg:rounded-b-none lg:rounded-r-xl" src={sel} alt="" />
+                        </div>
+                    </div>
+                  </div>
+              {/* <div className="bg-[#1C5035] rounded-4xl min-h-[400px] lg:h-[80vh] w-full p-2 md:p-6 lg:p-10">
+                    <div className="bg-gray-200 h-full rounded-3xl flex flex-col lg:flex-row">
+                        <div className="flex flex-col justify-center gap-4 w-full lg:w-[40%] px-6 lg:px-10 py-8 lg:py-10">
+                            <h1 className="text-lg md:text-3xl font-bold">Pan-African Conference on <span className="text-[#F5C518]">Social & Emotional Learning</span></h1>
+                            <div className="text-gray-700 leading-relaxed text-xs md:text-sm tracking-wide leading-loose">
+                              PACSEL convenes educators, policymakers, researchers, and practitioners to reimagine eduaction - placing human development at the heart of learning systems across Africa.
+                            </div>
+                            <button className="bg-[#F5C518] w-fit px-6 md:px-8 py-2 md:py-3 rounded-lg text-md md:text-lg text-[#1C5035] font-semibold mt-4 hover:bg-[#f5b007]" onClick={() => navigate('/resources/pacsel-webinar')}>
+                              Learn More
+                            </button>
+                        </div>
+                        <div className="w-full lg:w-[60%]">
+                            <img loading="lazy" className="w-full h-full object-cover rounded-b-3xl lg:rounded-b-none lg:rounded-r-xl" src={sel} alt="" />
+                        </div>
+                    </div>
+                  </div>
+                  <div>
+
+                  </div> */}
+                </div>
+              </div>
+          </div>
         </div>
 
         <div className="px-6 md:px-12 lg:px-20 py-10 lg:py-15">

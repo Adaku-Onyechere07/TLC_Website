@@ -23,7 +23,8 @@ interface Card {
   hasImage?: boolean;
   image?: string;
   tabs: TabKey[];
-  path: string;
+  path?: string;
+  link?: string;
 }
 
 type TabKey = "all" | "teacher-dev" | "ebooks" | "toolkits" | "videos" | "curriculum";
@@ -63,9 +64,9 @@ const ALL_CARDS: Card[] = [
     audience: "For Teachers",
     title: "SEL in Schools",
     description: "Designing and testing SEL implementation frameworks within diverse school contexts across the continent, with a focus on teacher-led practice.",
-    tags: [{ label: "Primary" }, { label: "Self-Assessment" }],
-    actionType: "download",
-    actionLabel: "Download",
+    tags: [{ label: "Basic Education" }, { label: "Self-Assessment" }],
+    actionType: "purchase",
+    actionLabel: "Purchase",
     tabs: ["all", "ebooks"],
     path: "/resources/sel-in-schools",
   },
@@ -106,39 +107,16 @@ const ALL_CARDS: Card[] = [
     path: "/resources/curriculum-coordinator-academy",
   },
   {
-    id: "30-day-lesson-plan",
-    category: "LESSON PLANS",
-    audience: "For Teachers",
-    title: "30-Day SEL Lesson Plan Bundle",
-    description: "A complete month of daily SEL lesson activities for primary classrooms, inspired by the five core competency areas with clear learning outcomes and facilitation guidance.",
-    tags: [{ label: "Primary" }, { label: "Daily Use" }],
-    actionType: "download",
-    actionLabel: "Download",
-    tabs: ["all", "ebooks"],
-    path: "/resources/30-day-lesson-plan",
-  },
-  {
     id: "sel-african-schools-report",
     category: "REPORT",
     title: "SEL in African Schools: State of Practice Report",
     description: "A synthesis of evidence from TLC's work across 10 African states, mapping the current landscape of SEL integration, its impact thus far, and identifying critical implementation gaps.",
     tags: [{ label: "Research" }, { label: "Africa" }],
-    actionType: "download",
-    actionLabel: "Download",
+    actionType: "purchase",
+    actionLabel: "Purchase",
     hasGlobe: true,
     tabs: ["all", "ebooks"],
     path: "/resources/sel-african-schools-report",
-  },
-  {
-    id: "integrated-curriculum-planner",
-    category: "CURRICULUM",
-    title: "Integrated Curriculum Planner for Schools",
-    description: "A structured planning tool that helps curriculum leads integrate SEL competencies across subject areas seamlessly without adding to teacher workload.",
-    tags: [{ label: "Curriculum" }, { label: "Integration" }],
-    actionType: "download",
-    actionLabel: "Download",
-    tabs: ["all", "curriculum"],
-    path: "/resources/curriculum-planner",
   },
   {
     id: "pacsel-webinar",
@@ -150,7 +128,7 @@ const ALL_CARDS: Card[] = [
     actionType: "watch",
     actionLabel: "Watch",
     tabs: ["all", "videos"],
-    path: "/resources/pacsel-webinar",
+    link: "https://www.youtube.com/live/8_IIDZuuxls?si=dpDazJ_GeQW_0NpH",
   },
   {
     id: "ndu-sel-toolkit",
@@ -185,7 +163,7 @@ const ALL_CARDS: Card[] = [
     hasImage: true,
     image: insideSelToolkitImg,
     tabs: ["all", "videos"],
-    path: "/resources/inside-sel-toolkit-video",
+    link: "https://youtu.be/zu1LYUGy-oc?si=gNzdtp11W0NMO19i",
   },
   {
     id: "ndu-student-resources-video",
@@ -198,7 +176,7 @@ const ALL_CARDS: Card[] = [
     hasImage: true,
     image: nduStudentResourcesImg,
     tabs: ["all", "videos"],
-    path: "/resources/ndu-student-resources-video",
+    link: "https://youtu.be/mZ10VZTH-Ek?si=P92V3A2QmgXCMNDN",
   },
   {
     id: "curriculum-planner-explainer",
@@ -211,18 +189,7 @@ const ALL_CARDS: Card[] = [
     hasImage: true,
     image: curriculumPlannerExplainerImg,
     tabs: ["all", "videos"],
-    path: "/resources/curriculum-planner-explainer",
-  },
-  {
-    id: "all-inclusive-curriculum-planner",
-    category: "CURRICULUM",
-    title: "All-Inclusive Curriculum Planner for Schools",
-    description: "A comprehensive skills-based curriculum planner that guides educators in designing structured learning experiences across Mathematics, Language Arts, Social Studies, and Science.",
-    tags: [{ label: "Planner" }, { label: "Skill-based" }],
-    actionType: "learn-more",
-    actionLabel: "Learn More",
-    tabs: ["all", "curriculum"],
-    path: "/resources/all-inclusive-curriculum-planner",
+    link: "https://youtu.be/mXsb70LQUD8?feature=shared",
   },
   {
     id: "custom-curriculum-planner",
@@ -254,7 +221,7 @@ const TABS: { key: TabKey; label: string }[] = [
   { key: "teacher-dev", label: "Teacher Development Programs" },
   { key: "ebooks", label: "E-books" },
   { key: "toolkits", label: "SEL Toolkits" },
-  { key: "videos", label: "Videos & Webinars" },
+  { key: "videos", label: "Videos" },
   { key: "curriculum", label: "Curriculum" },
 ];
 
@@ -263,7 +230,7 @@ const TAB_TITLES: Record<TabKey, string> = {
   "teacher-dev": "Teacher Development Programs",
   ebooks: "E-books",
   toolkits: "SEL Toolkits",
-  videos: "Videos & Webinars",
+  videos: "Videos",
   curriculum: "Curriculums",
 };
 
@@ -372,7 +339,7 @@ function ResourceCard({ card, onNavigate }: { card: Card; onNavigate: (path: str
             </span>
           ))}
         </div>
-        <ActionButton card={card} onClick={() => onNavigate(card.path)} />
+        <ActionButton card={card} onClick={() => {if (card.path) {onNavigate(card.path)} else if (card.link) {window.open(card.link, "_blank")}}} />
       </div>
     </div>
   );
@@ -527,7 +494,7 @@ export default function ResourceHub() {
               </span>
 
               <h1 className="text-[30px] md:text-[48px] lg:text-[60px] font-bold leading-tight">
-                SEL Resources & <br />
+                Resources & <br />
                 <span className="text-[#119B53]">Designed for Success.</span>
               </h1>
 
