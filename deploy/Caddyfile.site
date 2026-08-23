@@ -1,0 +1,10 @@
+# Append to /root/caddy-proxy/Caddyfile, then hot-reload:
+#   sudo docker exec caddy caddy reload --config /etc/caddy/Caddyfile
+#
+# Caddy obtains and renews the certificate automatically; no certbot involved.
+# Compression happens here at the edge, so the sidecar serves uncompressed.
+
+thelearningcraft.com, www.thelearningcraft.com {
+	encode zstd gzip
+	reverse_proxy tlc-web:80
+}

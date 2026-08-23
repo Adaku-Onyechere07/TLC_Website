@@ -1,0 +1,22 @@
+# Append this service to the `services:` section of
+# /root/caddy-proxy/docker-compose.yml, at the same indentation as `caddy:`.
+#
+# The `networks:` key is REQUIRED. Without it Compose puts the container on an
+# auto-created project-default network, the edge cannot resolve it by name, and
+# every request returns 502 while the sidecar itself looks perfectly healthy.
+#
+# Bring it up WITHOUT recreating the edge proxy by naming the service:
+#   sudo docker compose -f /root/caddy-proxy/docker-compose.yml up -d tlc-web
+
+  tlc-web:
+    image: caddy:2-alpine
+    container_name: tlc-web
+    restart: unless-stopped
+    volumes:
+      # Left = host dir CI rsyncs into. Right = what `root *` sees. Keep distinct.
+      - /var/www/thelearningcraft.com:/srv:ro
+      - ./tlc-web.Caddyfile:/etc/caddy/Caddyfile:ro
+    networks:
+      - caddy_gateway
+    # No `ports:` — the edge proxy reaches it over caddy_gateway. Publishing it
+    # would expose an untrusted plaintext copy of the site to the internet.

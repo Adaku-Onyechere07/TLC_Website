@@ -1,0 +1,30 @@
+# Runs INSIDE the tlc-web sidecar. Plain HTTP on :80 — TLS is the edge proxy's
+# job, and this port is never exposed outside the compose network.
+#
+# Host path: /root/caddy-proxy/tlc-web.Caddyfile
+
+:80 {
+	root * /srv
+
+	# Vite emits content-hashed filenames into /assets — safe to cache forever.
+	@assets path /assets/*
+	header @assets Cache-Control "public, max-age=31536000, immutable"
+
+	# Every SPA route serves index.html from a different path (/, /about,
+	# /programs/...), so matching the literal /index.html would leave those
+	# responses with no Cache-Control and let browsers cache a manifest whose
+	# asset hashes the next deploy deletes. Negate the asset matcher instead.
+	@nonhashed not path /assets/*
+	header @nonhashed Cache-Control "no-cache, must-revalidate"
+
+	header {
+		X-Content-Type-Options nosniff
+		X-Frame-Options SAMEORIGIN
+		Referrer-Policy strict-origin-when-cross-origin
+		-Server
+	}
+
+	# Client-side routing: unknown paths are React Router's problem, not 404s.
+	try_files {path} /index.html
+	file_server
+}
